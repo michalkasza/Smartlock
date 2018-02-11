@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">iot_smartlock</string>
+
+    <!-- drawer -->
+    <string name="drawer_opened_tag">Open</string>
+    <string name="drawer_closed_tag">Closed</string>
 </resources>
