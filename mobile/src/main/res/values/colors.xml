@@ -10,4 +10,6 @@
     <color name="text_icons_light">#ffffff</color>
 
     <color name="divider">#bdbdbd</color>
+
+    <color name="background_white">#ffffff</color>
 </resources>

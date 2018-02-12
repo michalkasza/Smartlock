@@ -3,6 +3,7 @@ package me.michalkasza.smartlock.ui
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_content.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseActivity
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle
@@ -28,6 +29,5 @@ class MainActivity : BaseActivity() {
         drawer.setDrawerListener(drawerToggle)
         drawerToggle.syncState()
     }
-
 
 }
