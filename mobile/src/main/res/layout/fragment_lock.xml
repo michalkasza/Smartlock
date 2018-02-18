@@ -17,9 +17,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tl_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            adapter="@{viewModel.pagerAdapter}"
-            fragments="@{viewModel.fragments}"
-            titles="@{viewModel.fragmentTitles}" />
+            pagerAdapter="@{viewModel.pagerAdapter}" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tl_profile"
@@ -31,7 +29,7 @@
             android:background="@color/primary"
             app:tabTextColor="@color/text_icons_light"
             app:tabSelectedTextColor="@color/accent"
-            viewPager="@{viewPager}" />
+            viewPager="@{view_pager}" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
