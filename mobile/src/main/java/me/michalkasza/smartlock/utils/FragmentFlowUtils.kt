@@ -16,7 +16,7 @@ object FragmentFlowUtils {
         fragmentTransaction = fragmentManager.beginTransaction()
 
         if(animation) fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-        fragmentTransaction.replace(R.id.fl_container, fragment, tag)
+        fragmentTransaction.replace(R.id.fl_main_container, fragment, tag)
         if(addToBackStack) fragmentTransaction.addToBackStack(tag)
         fragmentTransaction.commit()
     }
