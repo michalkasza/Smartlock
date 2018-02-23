@@ -1,21 +1,14 @@
 package me.michalkasza.smartlock.ui.components.binding
 
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.databinding.BindingAdapter
 import android.support.design.widget.TabLayout
+import android.support.v4.app.FragmentStatePagerAdapter
 
-
-class ViewPagerBinding {
-    @BindingAdapter(value = ["pagerAdapter"], requireAll = true)
-    fun setViewPager(viewPager: ViewPager, adapter: FragmentPagerAdapter) {
-        viewPager.adapter = adapter
-    }
-
-    @BindingAdapter(value = ["viewPager"], requireAll = true)
-    fun setViewPagerTabs(tabLayout: TabLayout, viewPager: ViewPager) {
-        tabLayout.post {
-            tabLayout.setupWithViewPager(viewPager)
-        }
+object ViewPagerBinding {
+    @JvmStatic
+    @BindingAdapter(value = ["adapter"], requireAll = true)
+    fun setPagerAdapter(viewPager: ViewPager, pagerAdapter: FragmentStatePagerAdapter, tabLayout: TabLayout) {
+        viewPager.adapter = pagerAdapter
     }
 }
