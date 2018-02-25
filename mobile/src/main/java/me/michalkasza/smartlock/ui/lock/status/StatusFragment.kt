@@ -11,8 +11,7 @@ import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.databinding.FragmentStatusBinding
 
 class StatusFragment: BaseFragment() {
-    override val familiarName: String?
-        get() = "Status"
+    override val familiarName = "Status"
     private lateinit var statusViewModel: StatusViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

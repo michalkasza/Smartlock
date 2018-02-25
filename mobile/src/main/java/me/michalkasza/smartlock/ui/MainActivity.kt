@@ -6,6 +6,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseActivity
+import me.michalkasza.smartlock.ui.lock.status.bottomsheet.StatusBottomsheet
 import me.michalkasza.smartlock.ui.lock.LockFragment
 import me.michalkasza.smartlock.utils.FragmentFlowUtils
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle
@@ -21,10 +22,16 @@ class MainActivity : BaseActivity() {
         initToolbar()
         initDrawerLayout()
         initFragment()
+        initStatusBottomsheet(StatusBottomsheet())
     }
 
     private fun initFragment() {
         FragmentFlowUtils.replaceFragment(supportFragmentManager, LockFragment(), LockFragment.TAG, false, false)
+    }
+
+    private fun initStatusBottomsheet(statusBottomsheet: StatusBottomsheet) {
+        fl_bottomsheet_container.removeAllViews()
+        fl_bottomsheet_container.addView(statusBottomsheet.getInflatedView(layoutInflater))
     }
 
     private fun initToolbar() {

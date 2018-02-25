@@ -11,8 +11,7 @@ import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.databinding.FragmentAccessBinding
 
 class AccessFragment: BaseFragment() {
-    override val familiarName: String?
-        get() = "Access"
+    override val familiarName = "Access"
     private lateinit var accessViewModel: AccessViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
