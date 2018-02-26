@@ -6,8 +6,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseActivity
-import me.michalkasza.smartlock.ui.lock.status.bottomsheet.StatusBottomsheet
 import me.michalkasza.smartlock.ui.lock.LockFragment
+import me.michalkasza.smartlock.ui.lock.status.bottomsheet.StatusBottomsheet
 import me.michalkasza.smartlock.utils.FragmentFlowUtils
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle
 

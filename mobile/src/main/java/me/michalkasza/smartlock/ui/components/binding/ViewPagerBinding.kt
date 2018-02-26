@@ -1,9 +1,9 @@
 package me.michalkasza.smartlock.ui.components.binding
 
-import android.support.v4.view.ViewPager
 import android.databinding.BindingAdapter
 import android.support.design.widget.TabLayout
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.ViewPager
 
 object ViewPagerBinding {
     @JvmStatic
