@@ -14,16 +14,17 @@
         <android.support.v7.widget.SwitchCompat
             android:layout_width="@dimen/lock_status_switch_size"
             android:layout_height="@dimen/lock_status_switch_size"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/ic_lock_status"
             android:thumb="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"
             app:track="@android:color/transparent" />
 
     </android.support.constraint.ConstraintLayout>

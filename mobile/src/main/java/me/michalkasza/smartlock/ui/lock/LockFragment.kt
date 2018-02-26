@@ -13,8 +13,7 @@ import me.michalkasza.smartlock.databinding.FragmentLockBinding
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
 class LockFragment: BaseFragment(), LockInterface.View {
-    override val familiarName: String?
-        get() = "Lock"
+    override val familiarName = "Lock"
     private lateinit var lockViewModel: LockViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,7 +35,7 @@ class LockFragment: BaseFragment(), LockInterface.View {
     }
 
     private fun initTabLayout() {
-        tl_profile.setupWithViewPager(view_pager)
+        tl_lock.setupWithViewPager(view_pager)
     }
 
     companion object {

@@ -31,7 +31,7 @@ class MainActivity : BaseActivity() {
 
     private fun initStatusBottomsheet(statusBottomsheet: StatusBottomsheet) {
         fl_bottomsheet_container.removeAllViews()
-        fl_bottomsheet_container.addView(statusBottomsheet.getInflatedView(layoutInflater))
+        fl_bottomsheet_container.addView(statusBottomsheet.getInflatedView(layoutInflater, fl_bottomsheet_container))
     }
 
     private fun initToolbar() {

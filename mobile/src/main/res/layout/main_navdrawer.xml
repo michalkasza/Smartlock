@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
+    android:background="@color/background_primary"
     android:tag="@string/tag_menu"
     android:padding="32dp">
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Michał Kasza"
-        android:textColor="@color/text_icons_light"
+        android:textColor="@color/text_white"
         android:textSize="@dimen/text_large"
         app:layout_constraintBottom_toTopOf="@+id/tv_user_role"
         app:layout_constraintStart_toEndOf="@+id/cv_avatar_container"
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/drawer_no_locks_info"
-            android:textColor="@color/text_icons_light" />
+            android:textColor="@color/text_white" />
     </LinearLayout>
 
     <!-- footer -->
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textColor="@color/text_icons_light"
+        android:textColor="@color/text_white"
         android:textSize="@dimen/text_medium"
         app:layout_constraintBottom_toBottomOf="@+id/iv_settings"
         app:layout_constraintStart_toEndOf="@+id/iv_settings"

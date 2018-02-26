@@ -12,6 +12,10 @@
     <string name="drawer_content_description_avatar">User avatar</string>
     <string name="drawer_content_description_lock_icon">Lock icon</string>
 
+    <!-- access log -->
+    <string name="log_last_access">Last access:</string>
 
-    <!--  -->
+    <string name="log_content_description_date">Last access date icon</string>
+    <string name="log_content_description_time">Last access time icon</string>
+
 </resources>

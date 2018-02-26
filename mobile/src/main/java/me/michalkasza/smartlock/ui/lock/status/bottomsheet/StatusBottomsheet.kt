@@ -8,12 +8,12 @@ import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.databinding.BottomsheetStatusBinding
 
 class StatusBottomsheet {
-    fun getInflatedView(layoutInflater: LayoutInflater): View {
+    fun getInflatedView(layoutInflater: LayoutInflater, bottomSheetContainer: View): View {
         val bottomSheetView = layoutInflater.inflate(R.layout.bottomsheet_status, null, false)
         bottomSheetView.addOnLayoutChangeListener({view, i1, i2, i3, i4, i5, i6, i7, i8 ->
             DataBindingUtil.bind<BottomsheetStatusBinding>(view)?.let { binding ->
                 binding.bottomSheetView = this
-//                BottomSheetBehavior.from(bottomSheetView).peekHeight = 200
+                BottomSheetBehavior.from(bottomSheetContainer).peekHeight = binding.clBottomsheetHeader.height
             }
         })
 
