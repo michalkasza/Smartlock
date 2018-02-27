@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock.data.remote
+package me.michalkasza.smartlock.data.repository
 
 object LogsRepository {
     val interactor = LogsInteractor()

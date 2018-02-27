@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock.data.remote
+package me.michalkasza.smartlock.data.model
 
 class Log {
     lateinit var id: String
