@@ -40,4 +40,5 @@ dependencies {
     implementation 'nl.psdcompany:duo-navigation-drawer:2.0.7'
     implementation "android.arch.lifecycle:extensions:1.1.0"
     implementation 'com.github.vipulasri:timelineview:1.0.6'
+    implementation 'com.google.firebase:firebase-firestore:11.8.0'
 }

@@ -27,12 +27,11 @@
             android:id="@+id/tl_lock"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/background_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabSelectedTextColor="@color/accent"
-            app:tabTextColor="@color/text_white" />
+            app:tabSelectedTextColor="@color/text_accent"
+            app:tabTextColor="@color/text_dark" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

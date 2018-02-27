@@ -3,6 +3,7 @@ package me.michalkasza.smartlock.ui.lock.status
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,5 +26,9 @@ class StatusFragment: BaseFragment() {
         viewBinding.viewModel = statusViewModel
 
         return viewBinding.root
+    }
+
+    companion object {
+        val TAG = StatusFragment::class.java.simpleName
     }
 }
