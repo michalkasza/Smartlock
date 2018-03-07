@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.databinding.FragmentStatusBinding
+import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
 class StatusFragment: BaseFragment() {
     override val familiarName = "Status"
@@ -22,7 +23,7 @@ class StatusFragment: BaseFragment() {
                 container,
                 false)
 
-        statusViewModel = ViewModelProviders.of(this).get(StatusViewModel::class.java)
+        statusViewModel = ViewModelProviders.of(this, ViewModelFactory(this, activity!!.application)).get(StatusViewModel::class.java)
         viewBinding.viewModel = statusViewModel
 
         return viewBinding.root

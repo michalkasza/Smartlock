@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include layout="@layout/main_navdrawer"/>
-    <include layout="@layout/main_content"/>
-</nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="me.michalkasza.smartlock.ui.MainViewModel"/>
+    </data>
+    <nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/main_navdrawer"
+            android:id="@+id/incl_navdrawer"
+            app:viewModel="@{ viewModel }"/>
+        <include
+            layout="@layout/main_content"
+            android:id="@+id/incl_content"
+            app:viewModel="@{ viewModel }"/>
+    </nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout>
+</layout>

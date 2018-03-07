@@ -6,19 +6,18 @@ import io.reactivex.Observable
 import me.michalkasza.smartlock.data.model.User
 
 class UsersInteractor {
-    val interactor = UsersInteractor()
     val db = FirebaseFirestore.getInstance().collection("users")
 
     fun getUser(userId: String) : Observable<User> {
         return Observable.create { subscriber ->
-            db.document(userId).get().addOnCompleteListener{ task ->
-                if(task.isSuccessful) {
-                    Log.e(TAG, "Received")
-                    task.result.data
+            db.document(userId).get().addOnSuccessListener({ userSnapshot->
+                if(userSnapshot != null) {
+                    val user = userSnapshot.toObject<User>(User::class.java)
+                    subscriber.onNext(user)
                 } else {
                     Log.e(TAG, "Error")
                 }
-            }
+            })
         }
     }
 

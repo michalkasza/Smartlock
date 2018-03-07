@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.databinding.FragmentAccessBinding
+import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
 class AccessFragment: BaseFragment() {
     override val familiarName = "Access"
@@ -21,7 +22,7 @@ class AccessFragment: BaseFragment() {
                 container,
                 false)
 
-        accessViewModel = ViewModelProviders.of(this).get(AccessViewModel::class.java)
+        accessViewModel = ViewModelProviders.of(this, ViewModelFactory(this, activity!!.application)).get(AccessViewModel::class.java)
         viewBinding.viewModel = accessViewModel
 
         return viewBinding.root

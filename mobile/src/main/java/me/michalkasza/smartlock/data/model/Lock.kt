@@ -1,10 +1,13 @@
 package me.michalkasza.smartlock.data.model
 
+import java.util.*
+import kotlin.properties.Delegates
+
 class Lock {
     lateinit var id: String
     lateinit var name: String
-    lateinit var status: Number
-    lateinit var lastAccess: Number
+    var status: Boolean by Delegates.notNull()
+    lateinit var lastAccess: Date
     lateinit var ownerId: String
-    var logs = HashMap<String, Any>()
+    lateinit var logs: ArrayList<String>
 }

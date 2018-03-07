@@ -8,6 +8,6 @@ interface LockInterface {
     }
 
     interface UserInteractions {
-
+        fun lockChanged()
     }
 }

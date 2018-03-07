@@ -5,6 +5,7 @@ class User {
     lateinit var name: String
     lateinit var surname: String
     lateinit var email: String
-    var locksOwned = HashMap<String, Any>()
-    var locksGranted = HashMap<String, Any>()
+    lateinit var locksOwned: ArrayList<String>
+    lateinit var locksGranted: ArrayList<String>
+
 }
