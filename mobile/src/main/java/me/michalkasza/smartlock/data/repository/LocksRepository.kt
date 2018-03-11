@@ -24,10 +24,10 @@ object LocksRepository {
     private fun getLock(lockId: String) {
         interactor.getLock(lockId).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
                 onNext = { lock ->
-                    var tempLocks = userLocks.value
-                    tempLocks?.add(lock)
+                    val tempLocks = ArrayList<Lock>()
+                    userLocks.value?.let { currentLocks -> tempLocks.addAll(currentLocks) }
+                    tempLocks.add(lock)
                     userLocks.value = tempLocks
-                    tempLocks = null
                 },
                 onError = { Log.e(TAG, "Error") }
         )

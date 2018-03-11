@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{ viewModel.user.name + viewModel.user.surname }"
+            android:text="@{ viewModel.userObservable.name + viewModel.userObservable.surname }"
             android:textColor="@color/text_white"
             android:textSize="@dimen/text_large"
             app:layout_constraintBottom_toTopOf="@+id/tv_user_role"
@@ -75,16 +75,17 @@
             app:layout_constraintTop_toBottomOf="@+id/cv_avatar_container">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_locks"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                listAdapter="@{ viewModel.navDrawerAdapter.get() }"/>
+                navRecyclerAdapter="@{ viewModel.adapterOvservable }"/>
+                <!--android:visibility="@{ viewModel.adapterOvservable.get().itemCount==0 ? View.GONE : View.VISIBLE, default = gone }"/>-->
             <TextView
                 android:id="@+id/tv_no_locks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/drawer_no_locks_info"
-                android:textColor="@color/text_white"
-                android:visibility="@{ viewModel.locks.isEmpty() ? View.GONE : View.VISIBLE, default = gone }"/>
+                android:textColor="@color/text_white"/>
+                <!--android:visibility="@{ viewModel.adapterOvservable.get().itemCount==0 ? View.VISIBLE : View.GONE, default = gone }"/>-->
         </LinearLayout>
 
         <!-- footer -->

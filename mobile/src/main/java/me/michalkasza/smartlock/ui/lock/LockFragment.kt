@@ -4,20 +4,19 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_lock.*
+import kotlinx.android.synthetic.main.main_navdrawer.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.data.repository.LocksRepository
-import me.michalkasza.smartlock.data.repository.UsersInteractor
-import me.michalkasza.smartlock.data.repository.UsersRepository
 import me.michalkasza.smartlock.databinding.FragmentLockBinding
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
 class LockFragment: BaseFragment(), LockInterface.View {
-    override val familiarName = "Lock"
     private lateinit var lockViewModel: LockViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
