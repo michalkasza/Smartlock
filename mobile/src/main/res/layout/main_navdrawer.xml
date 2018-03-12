@@ -77,7 +77,7 @@
                 android:id="@+id/rv_locks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                navRecyclerAdapter="@{ viewModel.adapterOvservable }"/>
+                navRecyclerAdapter="@{ viewModel.adapterObservable }"/>
                 <!--android:visibility="@{ viewModel.adapterOvservable.get().itemCount==0 ? View.GONE : View.VISIBLE, default = gone }"/>-->
             <TextView
                 android:id="@+id/tv_no_locks"

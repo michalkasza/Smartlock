@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock.ui.lock
+package me.michalkasza.smartlock.ui.lock.pager
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

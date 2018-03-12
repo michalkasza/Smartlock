@@ -2,9 +2,9 @@ package me.michalkasza.smartlock.data.model
 
 import java.util.*
 
-class Log {
+class LogEntry {
     lateinit var id: String
     lateinit var userId: String
     lateinit var lockId: String
-    lateinit var timestamp: Date
+    lateinit var accessTime: Date
 }

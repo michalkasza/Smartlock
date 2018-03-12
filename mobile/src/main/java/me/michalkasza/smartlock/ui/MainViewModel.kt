@@ -9,13 +9,13 @@ import me.michalkasza.smartlock.data.model.User
 
 class MainViewModel(baseView: BaseView, var app: Application): BaseViewModel(app), MainInterface.UserInteractions {
     val userObservable = ObservableField<User?>()
-    val adapterOvservable = ObservableField<MainNavDrawerAdapter>()
+    val adapterObservable = ObservableField<MainNavDrawerAdapter>()
 
     val locks = ArrayList<Lock>()
     val view = baseView as MainInterface.View
 
     init {
-        adapterOvservable.set(MainNavDrawerAdapter(locks))
+        adapterObservable.set(MainNavDrawerAdapter(locks))
     }
 
     override fun userChanged(user: User) {
@@ -25,6 +25,6 @@ class MainViewModel(baseView: BaseView, var app: Application): BaseViewModel(app
     override fun locksChanged(locks: ArrayList<Lock>) {
         this.locks.clear()
         this.locks.addAll(locks)
-        adapterOvservable.get()?.notifyDataSetChanged()
+        adapterObservable.get()?.notifyDataSetChanged()
     }
 }

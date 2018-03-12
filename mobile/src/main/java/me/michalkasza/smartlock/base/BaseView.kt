@@ -7,4 +7,6 @@ interface BaseView {
     fun getSupportFragmentManager(): FragmentManager
     fun showSnackbar(message: String)
     fun showSnackbar(messageResourceId: Int)
+    fun setToolbarTitle(title: String)
+    fun setToolbarTitle(titleResourceId: Int)
 }

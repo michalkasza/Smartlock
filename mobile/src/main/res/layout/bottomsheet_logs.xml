@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<data>
+    <variable
+        name="bottomSheetView"
+        type="me.michalkasza.smartlock.ui.lock.status.logs.LogsBottomsheet" />
+    <import type="android.view.View" />
+</data>
+
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/ab_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_bottomsheet_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_primary_dark">
+            <!-- TOP header -->
+            <TextView
+                android:id="@+id/tv_last_access_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/log_last_access"
+                android:textSize="@dimen/text_large"
+                android:textColor="@color/text_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tv_last_access_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{ bottomSheetView.lastAccessUsername }"
+                android:textColor="@color/text_accent"
+                android:textSize="@dimen/text_large"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_last_access_info"
+                app:layout_constraintStart_toEndOf="@+id/tv_last_access_info"
+                app:layout_constraintTop_toTopOf="@+id/tv_last_access_info" />
+            <ImageView
+                android:id="@+id/iv_access_date_info"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/log_content_description_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_last_access_info"
+                app:srcCompat="@drawable/ic_calendar" />
+            <ImageView
+                android:id="@+id/iv_access_time_info"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/log_content_description_time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_access_date_info"
+                app:srcCompat="@drawable/ic_time" />
+            <TextView
+                android:id="@+id/tv_access_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{ bottomSheetView.lastAccessDate }"
+                android:textColor="@color/text_white"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_access_date_info"
+                app:layout_constraintStart_toEndOf="@+id/iv_access_date_info"
+                app:layout_constraintTop_toTopOf="@+id/iv_access_date_info" />
+            <TextView
+                android:id="@+id/tv_access_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{ bottomSheetView.lastAccessTime }"
+                android:textColor="@color/text_white"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_access_time_info"
+                app:layout_constraintStart_toEndOf="@+id/iv_access_time_info"
+                app:layout_constraintTop_toTopOf="@+id/iv_access_time_info" />
+            <ImageView
+                android:id="@+id/iv_arrow_up"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_access_time_info"
+                app:srcCompat="@drawable/ic_arrow_up"
+                android:contentDescription="@string/log_content_description_arrow_up"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/background_white">
+        <!-- MAIN content -->
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/sc_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="160dp">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_logs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                logsRecyclerAdapter="@{ bottomSheetView.adapterObservable }"/>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>
+</layout>
