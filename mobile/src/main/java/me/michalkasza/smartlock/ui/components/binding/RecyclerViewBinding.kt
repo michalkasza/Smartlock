@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter
 import android.support.v7.widget.RecyclerView
 import com.github.vipulasri.timelineview.TimelineView
 import me.michalkasza.smartlock.ui.MainNavDrawerAdapter
+import me.michalkasza.smartlock.ui.lock.access.AccessAdapter
 import me.michalkasza.smartlock.ui.lock.status.logs.LogsAdapter
 
 object RecyclerViewBinding {
@@ -16,6 +17,12 @@ object RecyclerViewBinding {
     @JvmStatic
     @BindingAdapter(value = ["logsRecyclerAdapter"], requireAll = true)
     fun setLogsRecyclerAdapter(recyclerView: RecyclerView, adapter: LogsAdapter) {
+        recyclerView.adapter = adapter
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["accessRecyclerAdapter"], requireAll = true)
+    fun setLogsRecyclerAdapter(recyclerView: RecyclerView, adapter: AccessAdapter) {
         recyclerView.adapter = adapter
     }
 }

@@ -11,4 +11,5 @@ class Lock {
     lateinit var lastAccessUser: String
     lateinit var ownerId: String
     lateinit var logs: ArrayList<String>
+    lateinit var accessList: ArrayList<String>
 }

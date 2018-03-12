@@ -15,7 +15,7 @@ class MainViewModel(baseView: BaseView, var app: Application): BaseViewModel(app
     val view = baseView as MainInterface.View
 
     init {
-        adapterObservable.set(MainNavDrawerAdapter(locks))
+        adapterObservable.set(MainNavDrawerAdapter(locks, view.getSupportFragmentManager()))
     }
 
     override fun userChanged(user: User) {

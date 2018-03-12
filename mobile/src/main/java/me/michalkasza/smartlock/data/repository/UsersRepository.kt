@@ -11,11 +11,28 @@ object UsersRepository {
     val interactor = UsersInteractor()
 
     val currentUser = MutableLiveData<User>()
+    val currentLockAccessedUsers = MutableLiveData<ArrayList<User>>()
 
     fun getUser(userId: String) {
         interactor.getUser(userId).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                onNext = { user ->  currentUser.value = user },
+                onNext = { user ->
+                    user.id = userId
+                    currentUser.value = user
+                },
                 onError = { Log.e(TAG, "Error") }
         )
+    }
+
+    fun getUsers(usersId: ArrayList<String>) {
+        currentLockAccessedUsers.value = ArrayList()
+        usersId.forEach { userId -> interactor.getUser(userId).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
+                onNext = { user ->
+                    val tempList = currentLockAccessedUsers.value
+                    user.id = userId
+                    tempList?.add(user)
+                    currentLockAccessedUsers.value = tempList
+                },
+                onError = { Log.e(TAG, "Error") }
+        ) }
     }
 }

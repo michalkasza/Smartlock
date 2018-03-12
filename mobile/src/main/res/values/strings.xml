@@ -14,9 +14,13 @@
 
     <!-- access log -->
     <string name="log_last_access">Last access:</string>
-
     <string name="log_content_description_date">Last access date icon</string>
     <string name="log_content_description_time">Last access time icon</string>
     <string name="log_content_description_arrow_up">Swipe up to see log icon</string>
+
+    <!-- access list -->
+    <string name="acl_type_administrator">Lock administrator</string>
+    <string name="acl_type_limited">Limited access</string>
+
 
 </resources>

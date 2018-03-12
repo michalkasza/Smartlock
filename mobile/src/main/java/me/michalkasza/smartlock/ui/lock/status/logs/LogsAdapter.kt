@@ -6,9 +6,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.github.vipulasri.timelineview.TimelineView
 import me.michalkasza.smartlock.R
-import me.michalkasza.smartlock.R.id.tlv_timeline
+import me.michalkasza.smartlock.R.id.*
 import me.michalkasza.smartlock.data.model.LogEntry
 import me.michalkasza.smartlock.databinding.ItemLogBinding
 import java.text.SimpleDateFormat

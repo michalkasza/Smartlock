@@ -19,6 +19,7 @@ import me.michalkasza.smartlock.ui.lock.pager.LockPagerFragment
 import me.michalkasza.smartlock.ui.lock.status.logs.LogsBottomsheet
 import me.michalkasza.smartlock.utils.FragmentFlowUtils
 import me.michalkasza.smartlock.databinding.ActivityMainBinding
+import me.michalkasza.smartlock.ui.home.HomeFragment
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle
 
 class MainActivity : BaseActivity(), MainInterface.View {
@@ -58,7 +59,7 @@ class MainActivity : BaseActivity(), MainInterface.View {
     })
 
     private fun initFragment() {
-        FragmentFlowUtils.replaceFragment(supportFragmentManager, LockPagerFragment(), LockPagerFragment.TAG, false, false)
+        FragmentFlowUtils.replaceFragment(supportFragmentManager, HomeFragment(), HomeFragment.TAG, false, false)
     }
 
     private fun initToolbar() {
@@ -69,7 +70,6 @@ class MainActivity : BaseActivity(), MainInterface.View {
         fl_bottomsheet_container.fl_bottomsheet_container.removeAllViews()
         fl_bottomsheet_container.addView(bottomsheet.getInflatedView(layoutInflater, fl_bottomsheet_container))
         rv_logs.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_logs.isNestedScrollingEnabled = true
     }
 
     override fun setToolbarTitle(title: String) {
