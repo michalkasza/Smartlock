@@ -6,6 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import me.michalkasza.smartlock.data.model.Lock
 import me.michalkasza.smartlock.data.model.LogEntry
+import me.michalkasza.smartlock.data.model.User
 
 object LogsRepository {
     val TAG = LogsRepository::class.java.simpleName
@@ -27,5 +28,9 @@ object LogsRepository {
                 },
                 onError = { Log.e(TAG, "Error") }
         )
+    }
+
+    fun addLog(lockId: Lock?, userId: User?) {
+        lockId?.let { userId?.let { interactor.addLog(lockId, userId) } }
     }
 }

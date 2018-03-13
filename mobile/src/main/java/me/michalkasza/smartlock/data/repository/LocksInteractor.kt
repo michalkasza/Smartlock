@@ -2,8 +2,10 @@ package me.michalkasza.smartlock.data.repository
 
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import io.reactivex.Observable
 import me.michalkasza.smartlock.data.model.Lock
+import java.util.HashMap
 
 class LocksInteractor {
     val db = FirebaseFirestore.getInstance().collection("locks")
@@ -19,6 +21,12 @@ class LocksInteractor {
                 }
             })
         }
+    }
+
+    fun changeLockState(lockId: Lock, lockState: Boolean) {
+        val data = HashMap<String, Any>()
+        data.put("status", lockState)
+        lockId.id?.let { id -> db.document(id).set(data, SetOptions.merge()) }
     }
 
     companion object {

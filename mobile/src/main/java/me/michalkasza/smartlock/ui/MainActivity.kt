@@ -72,6 +72,10 @@ class MainActivity : BaseActivity(), MainInterface.View {
         toolbar.title = title
     }
 
+    override fun setSmartlockToolbarTitle(title: String?) {
+        toolbar.title = title
+    }
+
     override fun setToolbarTitle(titleResourceId: Int) {
         toolbar.title = getString(titleResourceId)
     }

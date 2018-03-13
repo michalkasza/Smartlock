@@ -35,4 +35,8 @@ object LocksRepository {
                 onError = { Log.e(TAG, "Error") }
         )
     }
+
+    fun changeLockState(lockId: Lock?, lockState: Boolean) {
+        lockId?.let { interactor.changeLockState(lockId, lockState) }
+    }
 }

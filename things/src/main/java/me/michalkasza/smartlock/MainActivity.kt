@@ -14,13 +14,15 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 class MainActivity : Activity() {
     lateinit var advertiseCallback: AdvertiseCallback
     lateinit var bluetoothManager: BluetoothManager
     lateinit var bluetoothAdapter: BluetoothAdapter
     lateinit var bluetoothLeAdvertiser: BluetoothLeAdvertiser
-    val db = FirebaseFirestore.getInstance().collection("locks")
+    val locksDb = FirebaseFirestore.getInstance().collection("locks")
+    val usersDB = FirebaseFirestore.getInstance().collection("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,18 +85,18 @@ class MainActivity : Activity() {
 
     private fun saveInFirebaseDatastore(uuid: String) {
         val city = HashMap<String, Any?>()
-        city.put("accessList", arrayListOf<String>())
+        city.put("accessList", arrayListOf("jQ3SygKyWeeYbJmLsuaInQcEZFA3"))
         city.put("lastAccessTime", null)
         city.put("lastAccessUser", null)
         city.put("logs", arrayListOf<String>())
-        city.put("name", null)
-        city.put("ownerId", null)
+        city.put("name", uuid.substring(uuid.lastIndexOf('-') + 1))
+        city.put("ownerId", "jQ3SygKyWeeYbJmLsuaInQcEZFA3")
         city.put("status", true)
 
-        db.document(uuid)
+        locksDb.document(uuid)
                 .set(city)
                 .addOnSuccessListener({
-                    db.document(uuid).addSnapshotListener({ lockSnapshot, firebaseFirestoreException ->
+                    locksDb.document(uuid).addSnapshotListener({ lockSnapshot, firebaseFirestoreException ->
                         if(lockSnapshot != null) {
                             val lock = lockSnapshot.toObject<Lock>(Lock::class.java)
                             if(lock.status) {
@@ -108,6 +110,17 @@ class MainActivity : Activity() {
                 .addOnFailureListener({ e ->
                     Log.w(TAG, "Error writing document", e)
                 })
+
+        usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").addSnapshotListener({ userSnapshot, firebaseFirestoreException ->
+            userSnapshot?.let {
+                val user = userSnapshot.toObject<User>(User::class.java)
+                val arr = user.locksOwned
+                arr.add(uuid)
+                val data = HashMap<String, Any>()
+                data.put("locksOwned", arr)
+                usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").set(data, SetOptions.merge())
+            }
+        })
     }
 
     companion object {

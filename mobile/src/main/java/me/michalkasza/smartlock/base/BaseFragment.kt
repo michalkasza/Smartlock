@@ -16,7 +16,7 @@ abstract class BaseFragment: Fragment(), BaseView {
 
     override fun showSnackbar(messageResourceId: Int) { activity.showSnackbar(messageResourceId) }
 
-    override fun setToolbarTitle(title: String) { activity.setToolbarTitle(title) }
+    override fun setSmartlockToolbarTitle(title: String?) { activity.setSmartlockToolbarTitle(title) }
 
     override fun setToolbarTitle(titleResourceId: Int) { activity.setToolbarTitle(titleResourceId) }
 }

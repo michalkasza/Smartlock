@@ -4,12 +4,12 @@ import java.util.*
 import kotlin.properties.Delegates
 
 class Lock {
-    lateinit var id: String
-    lateinit var name: String
+    var id: String? = null
+    var name: String? = null
     var status: Boolean by Delegates.notNull()
-    lateinit var lastAccessTime: Date
-    lateinit var lastAccessUser: String
-    lateinit var ownerId: String
-    lateinit var logs: ArrayList<String>
-    lateinit var accessList: ArrayList<String>
+    var lastAccessTime: Date? = null
+    var lastAccessUser: String? = null
+    var ownerId: String? = null
+    var logs = ArrayList<String>()
+    var accessList = ArrayList<String>()
 }
