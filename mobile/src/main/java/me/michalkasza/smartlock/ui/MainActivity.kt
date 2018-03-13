@@ -20,6 +20,7 @@ import me.michalkasza.smartlock.ui.lock.status.logs.LogsBottomsheet
 import me.michalkasza.smartlock.utils.FragmentFlowUtils
 import me.michalkasza.smartlock.databinding.ActivityMainBinding
 import me.michalkasza.smartlock.ui.home.HomeFragment
+import me.michalkasza.smartlock.ui.lock.BLEScanner
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle
 
 class MainActivity : BaseActivity(), MainInterface.View {
@@ -36,6 +37,7 @@ class MainActivity : BaseActivity(), MainInterface.View {
         initToolbar()
         initDrawerLayout()
         initFragment()
+        BLEScanner()
 
         UsersRepository.getUser("jQ3SygKyWeeYbJmLsuaInQcEZFA3")
     }
