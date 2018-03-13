@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock.ui.lock.status.logs
+package me.michalkasza.smartlock.ui.lock.logs
 
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
@@ -6,10 +6,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.github.vipulasri.timelineview.TimelineView
 import me.michalkasza.smartlock.R
-import me.michalkasza.smartlock.R.id.*
 import me.michalkasza.smartlock.data.model.LogEntry
 import me.michalkasza.smartlock.databinding.ItemLogBinding
 import java.text.SimpleDateFormat
@@ -42,7 +40,7 @@ class LogsAdapter(var logs: ArrayList<LogEntry>?) : RecyclerView.Adapter<LogsAda
             accessDateTime.set(SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.US).format(logEntry.accessTime))
             accessUser.set(logEntry.userId)
             val binding = DataBindingUtil.bind<ItemLogBinding>(view)
-            view.findViewById<TimelineView>(tlv_timeline).initLine(viewType)
+            view.findViewById<TimelineView>(R.id.tlv_timeline).initLine(viewType)
             this.logEntry= logEntry
             binding?.log = logEntry
             binding?.viewHolder = this

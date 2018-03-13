@@ -10,7 +10,7 @@ class UsersInteractor {
 
     fun getUser(userId: String) : Observable<User> {
         return Observable.create { subscriber ->
-            db.document(userId).get().addOnSuccessListener({ userSnapshot->
+            db.document(userId).addSnapshotListener({ userSnapshot, firebaseFirestoreException ->
                 if(userSnapshot != null) {
                     val user = userSnapshot.toObject<User>(User::class.java)
                     subscriber.onNext(user)

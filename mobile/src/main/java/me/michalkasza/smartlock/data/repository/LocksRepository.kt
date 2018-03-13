@@ -14,7 +14,6 @@ object LocksRepository {
     val currentLock = MutableLiveData<Lock>()
     val userLocks = MutableLiveData<ArrayList<Lock>>()
 
-
     fun getLocks(user: User) {
         userLocks.value = ArrayList()
         user.locksOwned.forEach { ownedLockId -> getLock(ownedLockId) }

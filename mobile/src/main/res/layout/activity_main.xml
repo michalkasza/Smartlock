@@ -10,14 +10,16 @@
     <nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout
         android:id="@+id/drawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
         <include
             layout="@layout/main_navdrawer"
             android:id="@+id/incl_navdrawer"
-            app:viewModel="@{ viewModel }"/>
+            app:viewModel="@{ viewModel }"
+            android:fitsSystemWindows="true"/>
         <include
             layout="@layout/main_content"
             android:id="@+id/incl_content"
-            app:viewModel="@{ viewModel }"/>
+            app:viewModel="@{ viewModel }" />
     </nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout>
 </layout>

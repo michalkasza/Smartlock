@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.ui.lock.access.AccessFragment
+import me.michalkasza.smartlock.ui.lock.logs.LogsFragment
 import me.michalkasza.smartlock.ui.lock.status.StatusFragment
 
 class LockPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager) {
@@ -13,6 +14,7 @@ class LockPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdap
     init {
         fragments.addAll(arrayListOf(
                 StatusFragment(),
+                LogsFragment(),
                 AccessFragment()
         ))
     }

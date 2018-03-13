@@ -6,12 +6,8 @@ import me.michalkasza.smartlock.data.model.LogEntry
 import java.util.*
 
 interface StatusInterface {
-    interface View: BaseView {
-        fun updateLogs(logs: ArrayList<LogEntry>)
-        fun updateLastAccess(dateTime: Date, username: String)
-    }
+    interface View: BaseView { }
     interface UserInteractions {
         fun lockChanged(lock: Lock)
-        fun logsChanged(logs: ArrayList<LogEntry>)
     }
 }

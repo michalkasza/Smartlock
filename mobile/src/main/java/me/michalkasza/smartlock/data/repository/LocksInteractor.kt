@@ -10,7 +10,7 @@ class LocksInteractor {
 
     fun getLock(lockId: String) : Observable<Lock> {
         return Observable.create { subscriber ->
-            db.document(lockId).get().addOnSuccessListener({ lockSnapshot->
+            db.document(lockId).addSnapshotListener({ lockSnapshot, firebaseFirestoreException ->
                 if(lockSnapshot != null) {
                     val lock = lockSnapshot.toObject<Lock>(Lock::class.java)
                     subscriber.onNext(lock)
