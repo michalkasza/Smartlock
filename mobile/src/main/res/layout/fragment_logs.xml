@@ -21,6 +21,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            logsRecyclerAdapter="@{ viewModel.adapterObservable }"/>
+            logsRecyclerAdapter="@{ viewModel.adapterObservable }"
+            logsLayoutManager="@{ viewModel.layoutManagerObservable }"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

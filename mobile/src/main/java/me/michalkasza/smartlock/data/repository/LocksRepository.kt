@@ -25,6 +25,10 @@ object LocksRepository {
                 onNext = { lock ->
                     val tempLocks = ArrayList<Lock>()
                     userLocks.value?.let { currentLocks -> tempLocks.addAll(currentLocks) }
+                    lock.id = lockId
+                    if(currentLock.value?.id.equals(lockId)) {
+                        currentLock.value = lock
+                    }
                     tempLocks.add(lock)
                     userLocks.value = tempLocks
                 },

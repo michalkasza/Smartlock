@@ -32,6 +32,8 @@ class MainActivity : BaseActivity(), MainInterface.View {
         val viewBinding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewBinding.viewModel = mainViewModel
 
+        rv_locks.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
         initToolbar()
         initDrawerLayout()
         initFragment()
@@ -44,7 +46,7 @@ class MainActivity : BaseActivity(), MainInterface.View {
         super.onResume()
         observeCurrentUser()
         observeLocks()
-        rv_locks.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
     }
 
     private fun observeCurrentUser() = UsersRepository.currentUser.observe(this, Observer { currentUser ->

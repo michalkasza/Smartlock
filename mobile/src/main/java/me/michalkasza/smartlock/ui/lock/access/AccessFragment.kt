@@ -39,7 +39,6 @@ class AccessFragment: BaseFragment(), AccessInterface.View {
         super.onResume()
         observeCurrentLock()
         observeCurrentLockAccessedUsers()
-        rv_accessed_users.layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
     }
 
     private fun observeCurrentLock() = LocksRepository.currentLock.observe(this, Observer { lock ->

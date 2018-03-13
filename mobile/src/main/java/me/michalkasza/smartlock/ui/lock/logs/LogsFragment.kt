@@ -36,7 +36,6 @@ class LogsFragment: BaseFragment(), LogsInterface.View {
 
     override fun onResume() {
         super.onResume()
-        rv_logs.layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         observeLockLogs()
     }
 
