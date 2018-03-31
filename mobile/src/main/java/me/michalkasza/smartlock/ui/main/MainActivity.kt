@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock.ui
+package me.michalkasza.smartlock.ui.main
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -6,9 +6,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_logs.*
 import kotlinx.android.synthetic.main.main_content.*
-import kotlinx.android.synthetic.main.main_content.view.*
 import kotlinx.android.synthetic.main.main_navdrawer.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseActivity

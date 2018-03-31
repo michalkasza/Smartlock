@@ -4,16 +4,14 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_logs.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.data.repository.LogsRepository
 import me.michalkasza.smartlock.databinding.FragmentLogsBinding
-import me.michalkasza.smartlock.ui.MainActivity
+import me.michalkasza.smartlock.ui.main.MainActivity
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
 class LogsFragment: BaseFragment(), LogsInterface.View {

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="me.michalkasza.smartlock.ui.MainViewModel"/>
+            type="me.michalkasza.smartlock.ui.main.MainViewModel"/>
     </data>
     <nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout
         android:id="@+id/drawer"

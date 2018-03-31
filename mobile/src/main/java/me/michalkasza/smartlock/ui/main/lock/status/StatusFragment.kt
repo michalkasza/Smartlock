@@ -9,13 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseFragment
-import me.michalkasza.smartlock.data.model.LogEntry
 import me.michalkasza.smartlock.data.repository.LocksRepository
-import me.michalkasza.smartlock.data.repository.LogsRepository
 import me.michalkasza.smartlock.databinding.FragmentStatusBinding
-import me.michalkasza.smartlock.ui.MainActivity
+import me.michalkasza.smartlock.ui.main.MainActivity
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
-import java.util.*
 
 class StatusFragment: BaseFragment(), StatusInterface.View {
     override val familiarName = "Status"

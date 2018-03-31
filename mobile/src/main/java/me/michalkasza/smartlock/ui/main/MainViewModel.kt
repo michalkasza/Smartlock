@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock.ui
+package me.michalkasza.smartlock.ui.main
 
 import android.app.Application
 import android.databinding.ObservableField

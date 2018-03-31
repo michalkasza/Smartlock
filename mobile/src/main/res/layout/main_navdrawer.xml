@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="me.michalkasza.smartlock.ui.MainViewModel"/>
+            type="me.michalkasza.smartlock.ui.main.MainViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
