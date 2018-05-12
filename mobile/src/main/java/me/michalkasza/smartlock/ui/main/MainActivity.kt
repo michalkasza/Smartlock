@@ -2,9 +2,11 @@ package me.michalkasza.smartlock.ui.main
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
 import kotlinx.android.synthetic.main.main_navdrawer.*
@@ -18,6 +20,14 @@ import me.michalkasza.smartlock.databinding.ActivityMainBinding
 import me.michalkasza.smartlock.ui.home.HomeFragment
 import me.michalkasza.smartlock.ui.lock.BLEScanner
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle
+import java.util.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import android.R.attr.data
+import android.app.Activity
+import com.firebase.ui.auth.IdpResponse
+
+
 
 class MainActivity : BaseActivity(), MainInterface.View {
     private lateinit var mainViewModel : MainViewModel
@@ -32,12 +42,35 @@ class MainActivity : BaseActivity(), MainInterface.View {
 
         rv_locks.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
+        signIn()
         initToolbar()
         initDrawerLayout()
         initFragment()
         BLEScanner()
 
         UsersRepository.getUser("jQ3SygKyWeeYbJmLsuaInQcEZFA3")
+    }
+
+    fun signIn(){
+        val providers = Arrays.asList(
+                AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build())
+
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                        .build(),
+                RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode === RC_SIGN_IN) {
+            val response = IdpResponse.fromResultIntent(data)
+            if (resultCode === Activity.RESULT_OK) {
+                val user = FirebaseAuth.getInstance().currentUser
+            } else { }
+        }
     }
 
     override fun onResume() {
@@ -82,5 +115,9 @@ class MainActivity : BaseActivity(), MainInterface.View {
         val drawerToggle = DuoDrawerToggle(this,  drawer, toolbar, R.string.drawer_opened_tag, R.string.drawer_closed_tag)
         drawer.setDrawerListener(drawerToggle)
         drawerToggle.syncState()
+    }
+
+    companion object {
+        val RC_SIGN_IN = 123;
     }
 }

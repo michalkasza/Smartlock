@@ -19,8 +19,9 @@ class LogsInteractor {
         return Observable.create { subscriber ->
             db.document(logId).addSnapshotListener({ logSnapshot, firebaseFirestoreException ->
                 if(logSnapshot != null) {
-                    val log = logSnapshot.toObject<LogEntry>(LogEntry::class.java)
-                    subscriber.onNext(log)
+                    logSnapshot.toObject<LogEntry>(LogEntry::class.java)?.let { log ->
+                        subscriber.onNext(log)
+                    }
                 } else {
                     Log.e(TAG, "Error")
                 }
