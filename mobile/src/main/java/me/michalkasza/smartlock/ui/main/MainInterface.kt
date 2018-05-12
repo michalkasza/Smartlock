@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock.ui
+package me.michalkasza.smartlock.ui.main
 
 import android.support.v4.app.FragmentManager
 import me.michalkasza.smartlock.data.model.Lock

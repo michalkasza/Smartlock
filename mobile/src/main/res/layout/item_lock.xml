@@ -8,7 +8,7 @@
             type="me.michalkasza.smartlock.data.model.Lock"/>
         <variable
             name="viewHolder"
-            type="me.michalkasza.smartlock.ui.MainNavDrawerAdapter.ViewHolder"/>
+            type="me.michalkasza.smartlock.ui.main.MainNavDrawerAdapter.ViewHolder"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

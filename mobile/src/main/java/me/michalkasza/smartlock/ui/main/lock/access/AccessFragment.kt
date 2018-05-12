@@ -4,17 +4,15 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_access.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.data.repository.LocksRepository
 import me.michalkasza.smartlock.data.repository.UsersRepository
 import me.michalkasza.smartlock.databinding.FragmentAccessBinding
-import me.michalkasza.smartlock.ui.MainActivity
+import me.michalkasza.smartlock.ui.main.MainActivity
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
 class AccessFragment: BaseFragment(), AccessInterface.View {

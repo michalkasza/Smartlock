@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_lock.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.databinding.FragmentLockBinding
-import me.michalkasza.smartlock.ui.MainActivity
+import me.michalkasza.smartlock.ui.main.MainActivity
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
 class LockPagerFragment : BaseFragment(), LockPagerInterface.View {
