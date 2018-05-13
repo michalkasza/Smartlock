@@ -129,6 +129,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/iv_logout"
             app:layout_constraintStart_toEndOf="@+id/iv_logout"
             app:layout_constraintTop_toTopOf="@+id/iv_logout"
+            android:onClick="@{ viewModel::logoutClicked }"
             android:text="@string/drawer_logout" />
     </android.support.constraint.ConstraintLayout>
 </layout>

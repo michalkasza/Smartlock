@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">SmartLock</string>
 
+    <!-- splash -->
+    <string name="splash_content_description_logo">Splash logo</string>
+
     <!-- drawer -->
     <string name="drawer_opened_tag" translatable="false">Open</string>
     <string name="drawer_closed_tag" translatable="false">Closed</string>

@@ -20,7 +20,7 @@ class StatusViewModel(baseView: BaseView, app: Application): BaseViewModel(app),
 
     override fun lockChanged(lock: Lock) {
         LogsRepository.getLogs(lock)
-        view.setSmartlockToolbarTitle(lock.name)
+        view.setAppToolbarTitle(lock.name)
         lastAccessUsername.set(lock.lastAccessUser)
         lock.lastAccessTime?.let { lastAccessDate.set(SimpleDateFormat("dd.MM.yyyy", Locale.US).format(lock.lastAccessTime)) }
         lock.lastAccessTime?.let { lastAccessTime.set(SimpleDateFormat("HH:mm:ss", Locale.US).format(lock.lastAccessTime)) }

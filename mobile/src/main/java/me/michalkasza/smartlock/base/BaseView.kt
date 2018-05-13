@@ -9,6 +9,6 @@ interface BaseView {
     fun getLinearVerticalLayoutManager(): LinearLayoutManager
     fun showSnackbar(message: String)
     fun showSnackbar(messageResourceId: Int)
-    fun setSmartlockToolbarTitle(title: String?)
-    fun setToolbarTitle(titleResourceId: Int)
+    fun setAppToolbarTitle(title: String?)
+    fun setAppToolbarTitle(titleResourceId: Int)
 }
