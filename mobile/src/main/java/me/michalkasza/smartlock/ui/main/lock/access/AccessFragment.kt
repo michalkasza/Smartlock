@@ -40,7 +40,7 @@ class AccessFragment: BaseFragment(), AccessInterface.View {
     }
 
     override fun showGrantUserDialog() {
-        // TODO: build dialog (title, inputlayout {email@et, callback@error}, send, cancel)
+        // TODO: build dialog (title, inputlayout {email@et, callback@error}, send, cancel).
     }
 
     private fun observeCurrentLock() = LocksRepository.currentLock.observe(this, Observer { lock ->
