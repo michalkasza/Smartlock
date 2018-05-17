@@ -98,11 +98,12 @@ class MainActivity : Activity() {
                 .addOnSuccessListener({
                     locksDb.document(uuid).addSnapshotListener({ lockSnapshot, firebaseFirestoreException ->
                         if(lockSnapshot != null) {
-                            val lock = lockSnapshot.toObject<Lock>(Lock::class.java)
-                            if(lock.status) {
-                                setLocked()
-                            } else {
-                                setUnlocked()
+                            lockSnapshot.toObject<Lock>(Lock::class.java)?.let{ lock ->
+                                if(lock.status) {
+                                    setLocked()
+                                } else {
+                                    setUnlocked()
+                                }
                             }
                         }
                     })
@@ -113,12 +114,13 @@ class MainActivity : Activity() {
 
         usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").addSnapshotListener({ userSnapshot, firebaseFirestoreException ->
             userSnapshot?.let {
-                val user = userSnapshot.toObject<User>(User::class.java)
-                val arr = user.locksOwned
-                arr.add(uuid)
-                val data = HashMap<String, Any>()
-                data.put("locksOwned", arr)
-                usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").set(data, SetOptions.merge())
+                userSnapshot.toObject<User>(User::class.java)?.let { user ->
+                    val arr = user.locksOwned
+                    arr.add(uuid)
+                    val data = HashMap<String, Any>()
+                    data.put("locksOwned", arr)
+                    usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").set(data, SetOptions.merge())
+                }
             }
         })
     }

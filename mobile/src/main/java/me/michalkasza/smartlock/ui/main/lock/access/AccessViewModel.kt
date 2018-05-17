@@ -3,6 +3,7 @@ package me.michalkasza.smartlock.ui.lock.access
 import android.app.Application
 import android.databinding.ObservableField
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import me.michalkasza.smartlock.base.BaseView
 import me.michalkasza.smartlock.base.BaseViewModel
 import me.michalkasza.smartlock.data.model.Lock
@@ -30,5 +31,9 @@ class AccessViewModel(baseView: BaseView, app: Application): BaseViewModel(app),
         this.accessedUsers.clear()
         this.accessedUsers.addAll(users)
         adapterObservable.get()?.notifyDataSetChanged()
+    }
+
+    override fun grantUserClicked(componentView: View) {
+        view.showGrantUserDialog()
     }
 }

@@ -39,6 +39,10 @@ class AccessFragment: BaseFragment(), AccessInterface.View {
         observeCurrentLockAccessedUsers()
     }
 
+    override fun showGrantUserDialog() {
+        // TODO: build dialog (title, inputlayout {email@et, callback@error}, send, cancel)
+    }
+
     private fun observeCurrentLock() = LocksRepository.currentLock.observe(this, Observer { lock ->
         lock?.let { accessViewModel.lockChanged(lock) }
     })

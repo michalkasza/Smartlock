@@ -24,6 +24,6 @@
     <!-- access list -->
     <string name="acl_type_administrator">Lock administrator</string>
     <string name="acl_type_limited">Limited access</string>
-
+    <string name="acl_grant_email_hint">Email of user to grant access</string>
 
 </resources>

@@ -14,6 +14,6 @@ interface MainInterface {
     interface UserInteractions {
         fun userChanged(user: User)
         fun locksChanged(locks: ArrayList<Lock>)
-        fun logoutClicked(view: android.view.View)
+        fun logoutClicked(componentView: android.view.View)
     }
 }

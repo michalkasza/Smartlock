@@ -27,7 +27,7 @@ class LocksInteractor {
     fun changeLockState(lockId: Lock, lockState: Boolean) {
         val data = HashMap<String, Any>()
         data.put("status", lockState)
-        lockId.id?.let { id -> db.document(id).set(data, SetOptions.merge()) }
+        lockId.id.let { id -> db.document(id).set(data, SetOptions.merge()) }
     }
 
     companion object {
