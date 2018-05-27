@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="lock"
+            type="me.michalkasza.smartlock.data.model.Lock"/>
+        <variable
+            name="viewHolder"
+            type="me.michalkasza.smartlock.ui.locks_list.LocksAdapter.ViewHolder"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@color/background_white">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:padding="4dp"
+            android:textSize="@dimen/text_medium"
+            android:background="@color/background_primary"
+            android:textColor="@color/text_white"
+            tools:text="Rydla 33 / 7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/sw_status"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/ic_lock_status"
+            android:onCheckedChanged="@{ (switch, checked) -> viewHolder.lockStatusChanged(checked) }"
+            android:thumb="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:track="@android:color/transparent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

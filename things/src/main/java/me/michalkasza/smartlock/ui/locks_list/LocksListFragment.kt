@@ -1,4 +1,4 @@
 package me.michalkasza.smartlock.ui.locks_list
 
-class LocksListFragment {
+class LocksListFragment : LocksListInterface.View {
 }

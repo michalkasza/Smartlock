@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common -->
+    <dimen name="text_xsmall">10sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_medium">14sp</dimen>
+    <dimen name="text_large">16sp</dimen>
+    <dimen name="text_xlarge">18sp</dimen>
+
+    <!-- drawer -->
+    <dimen name="drawer_avatar_size">64dp</dimen>
+    <dimen name="drawer_avatar_radius">32dp</dimen>
+
+    <!-- lock status -->
+    <dimen name="lock_status_switch_size">80dp</dimen>
+</resources>
