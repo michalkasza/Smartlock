@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock
+package me.michalkasza.smartlock.data.model
 
 import java.util.*
 import kotlin.properties.Delegates

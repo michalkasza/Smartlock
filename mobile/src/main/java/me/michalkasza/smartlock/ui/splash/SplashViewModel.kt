@@ -37,10 +37,8 @@ class SplashViewModel(baseView: BaseView, var app: Application): BaseViewModel(a
 
     override fun registerUser() {
         UsersRepository.registerUser(FirebaseAuth.getInstance().currentUser).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                onNext = { user -> view.initMain() },
+                onNext = { registeredUser -> view.initMain() },
                 onError = { registerUserError -> view.showSnackbar(R.string.auth_registration_error) }
         )
     }
-
-
 }

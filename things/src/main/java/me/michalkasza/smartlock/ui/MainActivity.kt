@@ -1,4 +1,4 @@
-package me.michalkasza.smartlock
+package me.michalkasza.smartlock.ui
 
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import me.michalkasza.smartlock.R
+import me.michalkasza.smartlock.data.model.Lock
+import me.michalkasza.smartlock.data.model.User
 
 class MainActivity : Activity() {
     lateinit var advertiseCallback: AdvertiseCallback
