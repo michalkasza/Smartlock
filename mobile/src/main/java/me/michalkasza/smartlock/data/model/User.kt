@@ -7,5 +7,4 @@ class User {
     lateinit var email: String
     lateinit var locksOwned: ArrayList<String>
     lateinit var locksGranted: ArrayList<String>
-
 }

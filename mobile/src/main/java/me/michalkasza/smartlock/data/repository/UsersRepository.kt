@@ -3,6 +3,8 @@ package me.michalkasza.smartlock.data.repository
 import android.arch.lifecycle.MutableLiveData
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import me.michalkasza.smartlock.data.model.Lock
@@ -15,14 +17,19 @@ object UsersRepository {
     val currentUser = MutableLiveData<User>()
     val currentLockAccessedUsers = MutableLiveData<ArrayList<User>>()
 
-    fun getCurrentUser() {
-        FirebaseAuth.getInstance().currentUser?.let { firebaseUser ->
-            interactor.getUser(firebaseUser.uid).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                    onNext = { user ->
-                        currentUser.value = user
-                    },
-                    onError = { Log.e(TAG, "Error") }
-            )
+    fun getCurrentUser() : Observable<User> {
+        return Observable.create { subscriber ->
+            FirebaseAuth.getInstance().currentUser?.let { firebaseUser ->
+                interactor.getUser(firebaseUser.uid).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
+                        onNext = { user ->
+                            currentUser.value = user
+                            subscriber.onNext(user)
+                        },
+                        onError = { e ->
+                            subscriber.onError(e)
+                        }
+                )
+            }
         }
     }
 
@@ -35,6 +42,21 @@ object UsersRepository {
                         currentLockAccessedUsers.value = tempList
                     },
                     onError = { Log.e(TAG, "Error") }
+            )
+        }
+    }
+
+    fun registerUser(userData: FirebaseUser?) : Observable<User> {
+        return Observable.create { subscriber ->
+            val user = User()
+            userData?.uid?.let { id -> user.id = id }
+            userData?.email?.let { email -> user.email = email }
+            userData?.displayName?.let { name -> user.name = name; user.surname = name }
+            user.locksGranted = arrayListOf()
+            user.locksOwned = arrayListOf()
+            interactor.addUserEntryToFirestore(user).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
+                    onNext = { registeredUser -> subscriber.onNext(registeredUser) },
+                    onError = { e -> subscriber.onError(e)}
             )
         }
     }
