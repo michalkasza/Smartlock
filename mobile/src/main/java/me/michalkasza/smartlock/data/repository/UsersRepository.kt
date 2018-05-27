@@ -55,7 +55,10 @@ object UsersRepository {
             user.locksGranted = arrayListOf()
             user.locksOwned = arrayListOf()
             interactor.addUserEntryToFirestore(user).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                    onNext = { registeredUser -> subscriber.onNext(registeredUser) },
+                    onNext = { registeredUser ->
+                        currentUser.value = registeredUser
+                        subscriber.onNext(registeredUser)
+                    },
                     onError = { e -> subscriber.onError(e)}
             )
         }

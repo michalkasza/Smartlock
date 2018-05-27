@@ -8,15 +8,10 @@ import android.os.Bundle
 import com.firebase.ui.auth.AuthUI
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseActivity
-import me.michalkasza.smartlock.data.repository.UsersRepository
 import me.michalkasza.smartlock.databinding.ActivitySplashBinding
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 import me.michalkasza.smartlock.ui.main.MainActivity
 import java.util.*
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.subscribeBy
-import me.michalkasza.smartlock.data.model.AuthError
-import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity: BaseActivity(), SplashInterface.View {
     private lateinit var splashViewModel: SplashViewModel
@@ -60,20 +55,7 @@ class SplashActivity: BaseActivity(), SplashInterface.View {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode.equals(AUTHENTICATION)) {
             if (resultCode.equals(Activity.RESULT_OK)) {
-                UsersRepository.getCurrentUser().observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                        onNext = { user -> initMain() },
-                        onError = { userError ->
-                            when(userError) {
-                                is AuthError.UserNotExistInFirestore -> {
-                                    UsersRepository.registerUser(FirebaseAuth.getInstance().currentUser).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                                            onNext = { user -> initMain() },
-                                            onError = { registrationError -> showSnackbar(R.string.auth_registration_error) }
-                                    )
-                                }
-                                else -> { showSnackbar(R.string.auth_error) }
-                            }
-                        }
-                )
+                splashViewModel.getCurrentUser()
             } else {
                 showSnackbar(R.string.auth_error)
             }
