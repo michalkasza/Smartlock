@@ -2,6 +2,7 @@ package me.michalkasza.smartlock.ui.locks_list
 
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SwitchCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,17 +27,19 @@ class LocksAdapter(var locks: ArrayList<Lock>?) : RecyclerView.Adapter<LocksAdap
 
     class ViewHolder(val view: View, val viewType: Int) : RecyclerView.ViewHolder(view) {
         lateinit var lock: Lock
+        lateinit var lockSwitchView: SwitchCompat
 
         fun bindView(lock: Lock) {
             val binding = DataBindingUtil.bind<ItemLockBinding>(view)
             this.lock= lock
+            this.lockSwitchView = view.findViewById(R.id.sw_status)
             binding?.lock = lock
             binding?.viewHolder = this
             binding?.executePendingBindings()
         }
 
         fun lockStatusChanged(isLocked: Boolean) {
-
+            lockSwitchView.isChecked = isLocked
         }
     }
 }
