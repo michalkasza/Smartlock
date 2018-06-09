@@ -7,9 +7,6 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.firebase.ui.auth.AuthUI
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.main_content.*
-import kotlinx.android.synthetic.main.main_navdrawer.*
 import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseActivity
 import me.michalkasza.smartlock.data.repository.LocksRepository
@@ -21,6 +18,9 @@ import me.michalkasza.smartlock.ui.home.HomeFragment
 import me.michalkasza.smartlock.ui.lock.BLEScanner
 import me.michalkasza.smartlock.ui.splash.SplashActivity
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_content.*
+import kotlinx.android.synthetic.main.main_navdrawer.*
 
 class MainActivity : BaseActivity(), MainInterface.View {
     private lateinit var mainViewModel : MainViewModel

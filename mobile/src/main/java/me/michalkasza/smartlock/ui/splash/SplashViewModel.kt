@@ -19,7 +19,7 @@ class SplashViewModel(baseView: BaseView, var app: Application): BaseViewModel(a
         if(user == null) {
             view.initAuthentication()
         } else {
-            view.initMain()
+            getCurrentUser()
         }
     }
 
