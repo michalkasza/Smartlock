@@ -11,6 +11,7 @@ import android.content.Context
 import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.BluetoothLeAdvertiser
 import android.util.Log
+import com.google.android.gms.tasks.OnCompleteListener
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.firebase.firestore.FirebaseFirestore
@@ -87,6 +88,7 @@ class MainActivity : Activity() {
     }
 
     private fun saveInFirebaseDatastore(uuid: String) {
+        Log.e(TAG, "saveInFirebaseDatastore")
         val city = HashMap<String, Any?>()
         city.put("accessList", arrayListOf("jQ3SygKyWeeYbJmLsuaInQcEZFA3"))
         city.put("lastAccessTime", null)
@@ -115,13 +117,15 @@ class MainActivity : Activity() {
                     Log.w(TAG, "Error writing document", e)
                 })
 
-        usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").addSnapshotListener({ userSnapshot, firebaseFirestoreException ->
+        usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").get().addOnCompleteListener(OnCompleteListener { task ->
+            val userSnapshot = task.result
             userSnapshot?.let {
                 userSnapshot.toObject<User>(User::class.java)?.let { user ->
-                    val arr = user.locksOwned
-                    arr.add(uuid)
+                    val locksOwned = arrayListOf<String>()
+                    locksOwned.addAll(user.locksOwned)
+                    locksOwned.add(uuid)
                     val data = HashMap<String, Any>()
-                    data.put("locksOwned", arr)
+                    data.put("locksOwned", locksOwned)
                     usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").set(data, SetOptions.merge())
                 }
             }
