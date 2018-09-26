@@ -11,7 +11,7 @@ import android.content.Context
 import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.BluetoothLeAdvertiser
 import android.util.Log
-import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.firebase.firestore.FirebaseFirestore
