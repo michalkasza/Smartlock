@@ -1,14 +1,11 @@
 package me.michalkasza.smartlock.ui.locks_list
 
-import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.michalkasza.smartlock.R
-import me.michalkasza.smartlock.databinding.FragmentLockslistBinding
 import me.michalkasza.smartlock.ui.MainActivity
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 
