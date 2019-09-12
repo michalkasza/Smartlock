@@ -3,7 +3,6 @@ package me.michalkasza.smartlock.ui.locks_list
 import androidx.lifecycle.ViewModelProviders
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,8 +41,8 @@ class LocksListFragment: BaseFragment(), LocksListInterface.View {
         locks?.let { locksListViewModel.locksChanged(locks) }
     })
 
-    override fun showNewLockDialog() {
-
+    override fun initNewLock() {
+        mainActivity.initializeNewLock()
     }
 
     companion object {

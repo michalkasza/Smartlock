@@ -12,6 +12,6 @@ interface AccessInterface {
     interface UserInteractions {
         fun lockChanged(lock: Lock)
         fun accessedUsersChanged(users: ArrayList<User>)
-        fun grantUserClicked(componentView: android.view.View)
+        fun grantUserClicked()
     }
 }

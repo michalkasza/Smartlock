@@ -35,6 +35,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/accent"
             android:src="@drawable/ic_add"
-            android:onClick="@{(view) -> viewModel.addLockClicked(view)}"/>
+            android:onClick="@{() -> viewModel.addLockClicked()}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

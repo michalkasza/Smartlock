@@ -9,18 +9,18 @@ import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.BluetoothLeAdvertiser
+import android.provider.Settings
 import android.util.Log
-import com.google.android.gms.tasks.*
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import me.michalkasza.smartlock.R
 import me.michalkasza.smartlock.base.BaseActivity
-import me.michalkasza.smartlock.data.model.Lock
 import me.michalkasza.smartlock.data.model.User
 import me.michalkasza.smartlock.data.repository.LocksRepository
 import me.michalkasza.smartlock.ui.locks_list.LocksListFragment
+import android.telephony.TelephonyManager
+import me.michalkasza.smartlock.R
+
 
 class MainActivity : BaseActivity() {
     lateinit var advertiseCallback: AdvertiseCallback
@@ -35,12 +35,12 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         initBluetoothServices()
-        initAdvertisingButton()
         initFragment()
     }
 
     override fun onResume() {
         super.onResume()
+        startBluetoothAdvertising()
         LocksRepository.getLocks()
         LocksRepository.initLocksChangesListener()
     }
@@ -49,12 +49,6 @@ class MainActivity : BaseActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_main_container, LocksListFragment(), LocksListFragment.TAG)
                 .commit()
-    }
-
-    private fun initAdvertisingButton() {
-        bt_advertise.setOnClickListener {
-            startAdvertising()
-        }
     }
 
     private fun initBluetoothServices() {
@@ -72,11 +66,21 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun startAdvertising() {
-        bluetoothLeAdvertiser.stopAdvertising(advertiseCallback)
-        val uuid = UUID.randomUUID()
+    fun getUUID(): String {
+        val teleManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        var tmSerial: String? = teleManager.simSerialNumber
+        var tmDeviceId: String? = teleManager.deviceId
+        var androidId: String? = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        if (tmSerial == null) tmSerial = "1"
+        if (tmDeviceId == null) tmDeviceId = "1"
+        if (androidId == null) androidId = "1"
+        val deviceUuid = UUID(androidId.hashCode().toLong(), tmDeviceId.hashCode().toLong() shl 32 or tmSerial.hashCode().toLong())
+        Log.e(TAG, deviceUuid.toString())
+        return deviceUuid.toString()
+    }
 
-        saveInFirebaseDatastore(uuid.toString())
+    private fun startBluetoothAdvertising() {
+        bluetoothLeAdvertiser.stopAdvertising(advertiseCallback)
 
         val settings = AdvertiseSettings.Builder()
                 .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_BALANCED)
@@ -88,43 +92,35 @@ class MainActivity : BaseActivity() {
         val data = AdvertiseData.Builder()
                 .setIncludeDeviceName(true)
                 .setIncludeTxPowerLevel(false)
-                .addServiceUuid(ParcelUuid(uuid))
+                .addServiceUuid(ParcelUuid.fromString(getUUID()))
                 .build()
 
         bluetoothLeAdvertiser.startAdvertising(settings, data, advertiseCallback)
     }
 
+    fun initializeNewLock() {
+        val uuid = UUID.randomUUID()
+        saveInFirebaseDatastore(uuid.toString())
+    }
+
     private fun saveInFirebaseDatastore(uuid: String) {
+        val sampleStreets = resources.getStringArray(R.array.streets)
+
         Log.e(TAG, "saveInFirebaseDatastore")
         val city = HashMap<String, Any?>()
         city.put("accessList", arrayListOf("jQ3SygKyWeeYbJmLsuaInQcEZFA3"))
         city.put("lastAccessTime", null)
         city.put("lastAccessUser", null)
         city.put("logs", arrayListOf<String>())
-        city.put("name", uuid.substring(uuid.lastIndexOf('-') + 1))
+        city.put("name", "${sampleStreets[Random().nextInt(sampleStreets.size)]} ${Random().nextInt(39)}/${Random().nextInt(140)}")
         city.put("ownerId", "jQ3SygKyWeeYbJmLsuaInQcEZFA3")
+        city.put("hostSecureId", getUUID())
         city.put("status", true)
 
         locksDb.document(uuid)
                 .set(city)
-                .addOnSuccessListener {
-                    locksDb.document(uuid).addSnapshotListener { lockSnapshot, firebaseFirestoreException ->
-                        if(lockSnapshot != null) {
-                            lockSnapshot.toObject<Lock>(Lock::class.java)?.let{ lock ->
-                                if(lock.status) {
-//                                    setLocked()
-                                } else {
-//                                    setUnlocked()
-                                }
-                            }
-                        }
-                    }
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error writing document", e)
-                }
 
-        usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").get().addOnCompleteListener(OnCompleteListener { task ->
+        usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").get().addOnCompleteListener { task ->
             val userSnapshot = task.result
             userSnapshot?.let {
                 userSnapshot.toObject<User>(User::class.java)?.let { user ->
@@ -136,7 +132,7 @@ class MainActivity : BaseActivity() {
                     usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").set(data, SetOptions.merge())
                 }
             }
-        })
+        }
     }
 
     companion object {

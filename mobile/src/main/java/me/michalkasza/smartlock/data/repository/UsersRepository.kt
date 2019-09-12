@@ -72,13 +72,26 @@ object UsersRepository {
         }
     }
 
-    fun grantLockToUser(lock: Lock, user: User) {
-        interactor.grantLockToUser(lock.id, user).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                onNext = { grantedUser ->
-                    Log.e(TAG, "User " + user.name + " has been added to " + lock.name + " lock ACL")
-                    // TODO: finalise granted lock implementation
-                },
-                onError = { Log.e(TAG, "Error") }
-        )
+    fun getUserByEmail(email: String?) : Observable<User> {
+        return Observable.create { subscriber ->
+            interactor.getUserByEmail(email).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
+                    onNext = { user ->
+                        subscriber.onNext(user)
+                    },
+                    onError = { e -> subscriber.onError(e) }
+            )
+        }
+    }
+
+    fun grantLockToUser(lockId: String?, user: User?) {
+        lockId?.let { lockId -> user?.let { user ->
+            interactor.grantLockToUser(lockId, user).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
+                    onNext = { grantedUser ->
+
+                    },
+                    onError = { Log.e(TAG, "Error") }
+            )
+        } }
+
     }
 }

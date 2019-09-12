@@ -6,7 +6,6 @@ import java.util.*
 
 
 class BLEScanner {
-    init {
         val mScanCallback = object : ScanCallback() {
             override fun onScanResult(callbackType: Int, result: ScanResult?) {
                 Log.e(TAG, "single dev: " + result?.device + " addr: " + result?.rssi)
@@ -16,7 +15,7 @@ class BLEScanner {
                     val result = results[0]
                     val device = result.device
                     val deviceAddress = device.address
-                    Log.e(TAG, "batch dev: " + device + " addr: " + deviceAddress)
+                    Log.e(TAG, "batch dev: $device addr: $deviceAddress")
                 }
             }
             override fun onScanFailed(errorCode: Int) {
@@ -32,6 +31,8 @@ class BLEScanner {
                 .build()
 
         val scanFilter = ScanFilter.Builder().build()
+
+    fun startScan() {
         scanner.startScan(Arrays.asList(scanFilter), settings, mScanCallback)
     }
 

@@ -14,11 +14,13 @@ import me.michalkasza.smartlock.data.repository.UsersRepository
 import me.michalkasza.smartlock.databinding.FragmentAccessBinding
 import me.michalkasza.smartlock.ui.main.MainActivity
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
+import me.michalkasza.smartlock.ui.main.lock.access.grant_dialog.GrantAccessDialogFragment
 
 class AccessFragment: BaseFragment(), AccessInterface.View {
     override val familiarName = "Access"
     private lateinit var accessViewModel: AccessViewModel
     private val mainActivity: MainActivity by lazy { activity as MainActivity }
+    private var currentLockId: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val viewBinding: FragmentAccessBinding = DataBindingUtil.inflate(
@@ -40,10 +42,19 @@ class AccessFragment: BaseFragment(), AccessInterface.View {
     }
 
     override fun showGrantUserDialog() {
-        // TODO: build dialog (title, inputlayout {email@et, callback@error}, send, cancel).
+        val ft = fragmentManager!!.beginTransaction()
+        val prev = fragmentManager!!.findFragmentByTag("dialog")
+        if (prev != null) {
+            ft.remove(prev)
+        }
+        ft.addToBackStack(null)
+
+        val newFragment = GrantAccessDialogFragment.newInstance(currentLockId)
+        newFragment.show(ft, "dialog")
     }
 
     private fun observeCurrentLock() = LocksRepository.currentLock.observe(this, Observer { lock ->
+        currentLockId = lock.id
         lock?.let { accessViewModel.lockChanged(lock) }
     })
 

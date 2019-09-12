@@ -38,7 +38,7 @@ class MainActivity : BaseActivity(), MainInterface.View {
         initToolbar()
         initDrawerLayout()
         initFragment()
-        BLEScanner()
+        BLEScanner().startScan()
     }
 
     override fun onResume() {

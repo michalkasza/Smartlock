@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">smartLOCK</string>
+    <string name="app_name">smartLOCK gate</string>
+    <string-array name="streets">
+        <item>Polna</item>
+        <item>Leśna</item>
+        <item> Słoneczna</item>
+        <item>Krótka</item>
+        <item>Szkolna</item>
+        <item>Ogrodowa</item>
+        <item>Lipowa</item>
+        <item>Łąkowa</item>
+        <item>Brzozowa</item>
+        <item>Kwiatowa</item>
+        <item>Kościelna</item>
+        <item>Sosnowa</item>
+        <item>Zielona</item>
+        <item>Parkowa</item>
+        <item>Akacjowa</item>
+        <item>Kolejowa</item>
+    </string-array>
 </resources>

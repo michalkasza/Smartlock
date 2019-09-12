@@ -30,15 +30,7 @@ class LocksListViewModel(baseView: BaseView, app: Application): BaseViewModel(ap
         adapterObservable.get()?.notifyDataSetChanged()
     }
 
-    override fun initNewLock() {
-
-    }
-
-    override fun removeLock() {
-
-    }
-
-    override fun addLockClicked(componentView: View) {
-        view.showNewLockDialog()
+    override fun addLockClicked() {
+        view.initNewLock()
     }
 }

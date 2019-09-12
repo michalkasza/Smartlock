@@ -6,13 +6,11 @@ import me.michalkasza.smartlock.data.model.Lock
 
 interface LocksListInterface {
     interface View : BaseView {
-        fun showNewLockDialog()
+        fun initNewLock()
     }
 
     interface UserInteractions {
         fun locksChanged(locks: List<Lock>)
-        fun initNewLock()
-        fun removeLock()
-        fun addLockClicked(componentView: android.view.View)
+        fun addLockClicked()
     }
 }

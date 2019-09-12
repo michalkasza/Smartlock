@@ -1,6 +1,8 @@
 package me.michalkasza.smartlock.data.repository
 
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import io.reactivex.Observable
 import me.michalkasza.smartlock.data.model.AuthError
 import me.michalkasza.smartlock.data.model.User
@@ -39,6 +41,27 @@ class UsersInteractor {
             db.document(user.id).update("locksGranted", locksGrantedUpdate)
                     .addOnSuccessListener { subscriber.onNext(user) }
                     .addOnFailureListener { e -> subscriber.onError(e) }
+            FirebaseFirestore.getInstance().collection("locks").document(lockId).update("accessList", FieldValue.arrayUnion(user.id))
+        }
+    }
+
+    fun getUserByEmail(email: String?) : Observable<User> {
+        return Observable.create { subscriber ->
+            db.whereEqualTo("email", email).get()
+                    .addOnSuccessListener { usersMatched ->
+                        usersMatched.forEach { userSnapshot ->
+                            userSnapshot?.toObject<User>(User::class.java)?.let { user ->
+                                user.id = userSnapshot.id
+                                subscriber.onNext(user)
+                            }
+                        }
+                    }
+                    .addOnFailureListener {
+                        subscriber.onError(it)
+                    }
+                    .addOnCompleteListener {
+                        subscriber.onComplete()
+                    }
         }
     }
 
