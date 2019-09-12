@@ -7,12 +7,12 @@
             name="viewModel"
             type="me.michalkasza.smartlock.ui.lock.status.StatusViewModel"/>
     </data>
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <!-- LOCK status -->
-        <android.support.v7.widget.SwitchCompat
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchCompat"
             android:layout_width="@dimen/lock_status_switch_size"
             android:layout_height="@dimen/lock_status_switch_size"
@@ -22,6 +22,7 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/ic_lock_status"
             android:thumb="@android:color/transparent"
+            android:checked="@{ viewModel.currentLock.status, default=false }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +32,7 @@
             android:onCheckedChanged="@{ (switch, checked) -> viewModel.lockStatusChanged(checked) }"/>
 
         <!-- LAST ACCESS info -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_bottomsheet_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,19 +49,21 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/log_last_access"
                 android:textColor="@color/text_white"
-                android:textSize="@dimen/text_large"
+                android:textSize="@dimen/text_medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_last_access_user"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@{ viewModel.lastAccessUsername }"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{ viewModel.currentLock.lastAccessUser }"
                 android:textColor="@color/text_accent"
-                android:textSize="@dimen/text_large"
+                android:textSize="@dimen/text_medium"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_last_access_info"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_last_access_info"
                 app:layout_constraintTop_toTopOf="@+id/tv_last_access_info" />
 
@@ -90,26 +93,30 @@
 
             <TextView
                 android:id="@+id/tv_access_date"
-                android:layout_width="wrap_content"
+                timestampExtractDate="@{ viewModel.currentLock.lastAccessTime }"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@{ viewModel.lastAccessDate }"
+                android:layout_marginEnd="16dp"
                 android:textColor="@color/text_white"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_access_date_info"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_access_date_info"
                 app:layout_constraintTop_toTopOf="@+id/iv_access_date_info" />
 
             <TextView
                 android:id="@+id/tv_access_time"
-                android:layout_width="wrap_content"
+                timestampExtractHours="@{ viewModel.currentLock.lastAccessTime }"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@{ viewModel.lastAccessTime }"
+                android:layout_marginEnd="16dp"
                 android:textColor="@color/text_white"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_access_time_info"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_access_time_info"
                 app:layout_constraintTop_toTopOf="@+id/iv_access_time_info" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

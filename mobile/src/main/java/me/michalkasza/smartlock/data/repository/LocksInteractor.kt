@@ -12,7 +12,7 @@ class LocksInteractor {
 
     fun getLock(lockId: String) : Observable<Lock> {
         return Observable.create { subscriber ->
-            db.document(lockId).addSnapshotListener({ lockSnapshot, firebaseFirestoreException ->
+            db.document(lockId).addSnapshotListener { lockSnapshot, firebaseFirestoreException ->
                 if(lockSnapshot != null) {
                     lockSnapshot.toObject<Lock>(Lock::class.java)?.let { lock ->
                         subscriber.onNext(lock)
@@ -20,13 +20,15 @@ class LocksInteractor {
                 } else {
                     Log.e(TAG, "Error")
                 }
-            })
+            }
         }
     }
 
     fun changeLockState(lockId: Lock, lockState: Boolean) {
         val data = HashMap<String, Any>()
         data.put("status", lockState)
+        data.put("lastAccessTime", System.currentTimeMillis())
+        data.put("lastAccessUser", "${UsersRepository.currentUser.value?.name} ${UsersRepository.currentUser.value?.surname}, ${UsersRepository.currentUser.value?.email}")
         lockId.id.let { id -> db.document(id).set(data, SetOptions.merge()) }
     }
 

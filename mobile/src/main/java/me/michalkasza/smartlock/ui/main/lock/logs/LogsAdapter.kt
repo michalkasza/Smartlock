@@ -1,8 +1,8 @@
 package me.michalkasza.smartlock.ui.lock.logs
 
-import android.databinding.DataBindingUtil
-import android.databinding.ObservableField
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import me.michalkasza.smartlock.databinding.ItemLogBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LogsAdapter(var logs: ArrayList<LogEntry>?) : RecyclerView.Adapter<LogsAdapter.ViewHolder>() {
+class LogsAdapter(var logs: ArrayList<LogEntry>?) : androidx.recyclerview.widget.RecyclerView.Adapter<LogsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_log, parent, false)
         return ViewHolder(view, viewType)
@@ -31,7 +31,7 @@ class LogsAdapter(var logs: ArrayList<LogEntry>?) : RecyclerView.Adapter<LogsAda
         return TimelineView.getTimeLineViewType(position, getItemCount());
     }
 
-    class ViewHolder(val view: View, val viewType: Int) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val view: View, val viewType: Int) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         lateinit var logEntry: LogEntry
         val accessDateTime = ObservableField<String>()
         val accessUser = ObservableField<String>()

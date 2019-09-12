@@ -11,7 +11,7 @@
             type="me.michalkasza.smartlock.ui.main.MainNavDrawerAdapter.ViewHolder"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_item_lock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:contentDescription="@string/drawer_content_description_lock_icon"
-            android:src="@drawable/ic_lock"
+            app:srcCompat="@drawable/ic_lock"
             android:tint="@{ viewHolder.isSelected ? @color/accent : @color/background_white }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,5 +43,5 @@
             android:text="@{ lock.name }" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

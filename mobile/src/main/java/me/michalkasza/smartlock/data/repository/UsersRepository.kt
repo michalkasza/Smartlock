@@ -1,6 +1,6 @@
 package me.michalkasza.smartlock.data.repository
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -28,6 +28,7 @@ object UsersRepository {
                         onError = { e ->
                             subscriber.onError(e)
                         }
+
                 )
             }
         }
@@ -37,9 +38,16 @@ object UsersRepository {
         currentLockAccessedUsers.value = ArrayList()
             usersId.forEach { userId -> interactor.getUser(userId).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
                     onNext = { user ->
-                        val tempList = currentLockAccessedUsers.value
-                        tempList?.add(user)
-                        currentLockAccessedUsers.value = tempList
+                        val tempUsers = arrayListOf<User>()
+                        currentLockAccessedUsers.value?.let { tempUsers.addAll(it) }
+                        user.id = userId
+                        tempUsers.forEach {
+                            if(it.id == userId) {
+                                tempUsers.remove(it)
+                            }
+                        }
+                        tempUsers.add(user)
+                        currentLockAccessedUsers.value = tempUsers
                     },
                     onError = { Log.e(TAG, "Error") }
             )

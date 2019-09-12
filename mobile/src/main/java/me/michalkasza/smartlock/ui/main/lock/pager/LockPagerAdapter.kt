@@ -1,8 +1,8 @@
 package me.michalkasza.smartlock.ui.lock.pager
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import me.michalkasza.smartlock.base.BaseFragment
 import me.michalkasza.smartlock.ui.lock.access.AccessFragment
 import me.michalkasza.smartlock.ui.lock.logs.LogsFragment

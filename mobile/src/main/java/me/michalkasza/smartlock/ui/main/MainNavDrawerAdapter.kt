@@ -1,9 +1,9 @@
 package me.michalkasza.smartlock.ui.main
 
-import android.databinding.DataBindingUtil
-import android.databinding.ObservableField
-import android.support.v4.app.FragmentManager
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import me.michalkasza.smartlock.databinding.ItemLockBinding
 import me.michalkasza.smartlock.ui.lock.pager.LockPagerFragment
 import me.michalkasza.smartlock.utils.FragmentFlowUtils
 
-class MainNavDrawerAdapter(var locks: ArrayList<Lock>?, var supportFragmentManager: FragmentManager) : RecyclerView.Adapter<MainNavDrawerAdapter.ViewHolder>() {
+class MainNavDrawerAdapter(var locks: ArrayList<Lock>?, var supportFragmentManager: FragmentManager) : androidx.recyclerview.widget.RecyclerView.Adapter<MainNavDrawerAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_lock, parent, false)
         return ViewHolder(view, supportFragmentManager)
@@ -28,7 +28,7 @@ class MainNavDrawerAdapter(var locks: ArrayList<Lock>?, var supportFragmentManag
         return locks?.size ?: 0
     }
 
-    class ViewHolder(val view: View, val supportFragmentManager: FragmentManager) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val view: View, val supportFragmentManager: FragmentManager) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         lateinit var lock: Lock
         val isSelected = ObservableField<Boolean>()
 

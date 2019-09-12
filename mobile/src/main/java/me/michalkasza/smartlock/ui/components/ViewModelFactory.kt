@@ -1,8 +1,8 @@
 package me.michalkasza.smartlock.ui.components
 
 import android.app.Application
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import me.michalkasza.smartlock.base.BaseView
 
 

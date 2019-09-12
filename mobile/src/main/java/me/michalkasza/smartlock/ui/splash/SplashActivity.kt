@@ -1,9 +1,9 @@
 package me.michalkasza.smartlock.ui.splash
 
-import android.app.Activity
-import android.arch.lifecycle.ViewModelProviders
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import com.firebase.ui.auth.AuthUI
 import me.michalkasza.smartlock.R
@@ -11,13 +11,12 @@ import me.michalkasza.smartlock.base.BaseActivity
 import me.michalkasza.smartlock.databinding.ActivitySplashBinding
 import me.michalkasza.smartlock.ui.components.ViewModelFactory
 import me.michalkasza.smartlock.ui.main.MainActivity
-import java.util.*
 
 class SplashActivity: BaseActivity(), SplashInterface.View {
     private lateinit var splashViewModel: SplashViewModel
-    private val authenticationProviders = Arrays.asList(
-            AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-            AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
+    private val authenticationProviders = arrayListOf(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build()
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +53,7 @@ class SplashActivity: BaseActivity(), SplashInterface.View {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode.equals(AUTHENTICATION)) {
-            if (resultCode.equals(Activity.RESULT_OK)) {
+            if (resultCode.equals(AppCompatActivity.RESULT_OK)) {
                 splashViewModel.getCurrentUser()
             } else {
                 showSnackbar(R.string.auth_error)

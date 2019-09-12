@@ -1,7 +1,7 @@
 package me.michalkasza.smartlock.ui.components.binding
 
-import android.databinding.BindingAdapter
-import android.support.v4.view.ViewPager
+import androidx.databinding.BindingAdapter
+import androidx.viewpager.widget.ViewPager
 import me.michalkasza.smartlock.ui.lock.pager.LockPagerAdapter
 
 object ViewPagerBinding {

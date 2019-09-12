@@ -1,9 +1,9 @@
 package me.michalkasza.smartlock.base
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.ViewModel
-import android.databinding.Observable
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.databinding.Observable
 
 open class BaseViewModel(app: Application) : AndroidViewModel(app), Observable {
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { }

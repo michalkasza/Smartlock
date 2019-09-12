@@ -1,7 +1,7 @@
 package me.michalkasza.smartlock.ui.main
 
 import android.app.Application
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 import android.view.View
 import me.michalkasza.smartlock.base.BaseView
 import me.michalkasza.smartlock.base.BaseViewModel

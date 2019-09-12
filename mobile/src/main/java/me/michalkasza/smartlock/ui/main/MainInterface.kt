@@ -1,6 +1,6 @@
 package me.michalkasza.smartlock.ui.main
 
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentManager
 import android.view.View
 import me.michalkasza.smartlock.data.model.Lock
 import me.michalkasza.smartlock.data.model.User

@@ -8,7 +8,7 @@
             name="viewModel"
             type="me.michalkasza.smartlock.ui.main.MainViewModel"/>
     </data>
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_primary"
@@ -16,7 +16,7 @@
         android:padding="32dp">
 
         <!-- header -->
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cv_avatar_container"
             android:layout_width="@dimen/drawer_avatar_size"
             android:layout_height="@dimen/drawer_avatar_size"
@@ -34,8 +34,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:contentDescription="@string/drawer_content_description_avatar"
-                android:src="@drawable/placeholder_avatar" />
-        </android.support.v7.widget.CardView>
+                app:srcCompat="@drawable/placeholder_avatar" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_username"
@@ -73,7 +73,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cv_avatar_container">
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_locks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             android:layout_height="24dp"
             android:layout_marginBottom="16dp"
             android:contentDescription="@string/drawer_content_description_lock_icon"
-            android:src="@drawable/ic_settings"
+            app:srcCompat="@drawable/ic_settings"
             app:layout_constraintBottom_toTopOf="@+id/iv_logout"
             app:layout_constraintStart_toStartOf="parent" />
         <TextView
@@ -115,7 +115,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:contentDescription="@string/drawer_content_description_lock_icon"
-            android:src="@drawable/ic_logout"
+            app:srcCompat="@drawable/ic_logout"
             android:tint="@color/accent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -131,5 +131,5 @@
             app:layout_constraintTop_toTopOf="@+id/iv_logout"
             android:onClick="@{ viewModel::logoutClicked }"
             android:text="@string/drawer_logout" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

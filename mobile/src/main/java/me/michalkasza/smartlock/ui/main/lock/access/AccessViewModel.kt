@@ -1,8 +1,8 @@
 package me.michalkasza.smartlock.ui.lock.access
 
 import android.app.Application
-import android.databinding.ObservableField
-import android.support.v7.widget.LinearLayoutManager
+import androidx.databinding.ObservableField
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import me.michalkasza.smartlock.base.BaseView
 import me.michalkasza.smartlock.base.BaseViewModel
@@ -14,7 +14,7 @@ class AccessViewModel(baseView: BaseView, app: Application): BaseViewModel(app),
     val view = baseView as AccessInterface.View
 
     val adapterObservable = ObservableField<AccessAdapter>()
-    val layoutManagerObservable = ObservableField<LinearLayoutManager>()
+    val layoutManagerObservable = ObservableField<androidx.recyclerview.widget.LinearLayoutManager>()
 
     val accessedUsers = ArrayList<User>()
 

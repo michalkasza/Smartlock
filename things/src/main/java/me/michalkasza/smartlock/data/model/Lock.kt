@@ -7,7 +7,7 @@ class Lock {
     var id: String? = null
     var name: String? = null
     var status: Boolean by Delegates.notNull()
-    var lastAccessTime: Date? = null
+    var lastAccessTime: Long? = null
     var lastAccessUser: String? = null
     var ownerId: String? = null
     var logs = ArrayList<String>()

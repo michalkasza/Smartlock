@@ -1,6 +1,5 @@
 package me.michalkasza.smartlock.ui
 
-import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.os.Bundle
 import android.os.ParcelUuid
@@ -17,10 +16,13 @@ import java.util.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import me.michalkasza.smartlock.R
+import me.michalkasza.smartlock.base.BaseActivity
 import me.michalkasza.smartlock.data.model.Lock
 import me.michalkasza.smartlock.data.model.User
+import me.michalkasza.smartlock.data.repository.LocksRepository
+import me.michalkasza.smartlock.ui.locks_list.LocksListFragment
 
-class MainActivity : Activity() {
+class MainActivity : BaseActivity() {
     lateinit var advertiseCallback: AdvertiseCallback
     lateinit var bluetoothManager: BluetoothManager
     lateinit var bluetoothAdapter: BluetoothAdapter
@@ -34,6 +36,19 @@ class MainActivity : Activity() {
 
         initBluetoothServices()
         initAdvertisingButton()
+        initFragment()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LocksRepository.getLocks()
+        LocksRepository.initLocksChangesListener()
+    }
+
+    private fun initFragment() {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_main_container, LocksListFragment(), LocksListFragment.TAG)
+                .commit()
     }
 
     private fun initAdvertisingButton() {
@@ -79,14 +94,6 @@ class MainActivity : Activity() {
         bluetoothLeAdvertiser.startAdvertising(settings, data, advertiseCallback)
     }
 
-    private fun setUnlocked() {
-        tv_status.setText("Unlocked")
-    }
-
-    private fun setLocked() {
-        tv_status.setText("Locked")
-    }
-
     private fun saveInFirebaseDatastore(uuid: String) {
         Log.e(TAG, "saveInFirebaseDatastore")
         val city = HashMap<String, Any?>()
@@ -100,22 +107,22 @@ class MainActivity : Activity() {
 
         locksDb.document(uuid)
                 .set(city)
-                .addOnSuccessListener({
-                    locksDb.document(uuid).addSnapshotListener({ lockSnapshot, firebaseFirestoreException ->
+                .addOnSuccessListener {
+                    locksDb.document(uuid).addSnapshotListener { lockSnapshot, firebaseFirestoreException ->
                         if(lockSnapshot != null) {
                             lockSnapshot.toObject<Lock>(Lock::class.java)?.let{ lock ->
                                 if(lock.status) {
-                                    setLocked()
+//                                    setLocked()
                                 } else {
-                                    setUnlocked()
+//                                    setUnlocked()
                                 }
                             }
                         }
-                    })
-                })
-                .addOnFailureListener({ e ->
+                    }
+                }
+                .addOnFailureListener { e ->
                     Log.w(TAG, "Error writing document", e)
-                })
+                }
 
         usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").get().addOnCompleteListener(OnCompleteListener { task ->
             val userSnapshot = task.result

@@ -1,8 +1,8 @@
 package me.michalkasza.smartlock.ui.lock.logs
 
 import android.app.Application
-import android.databinding.ObservableField
-import android.support.v7.widget.LinearLayoutManager
+import androidx.databinding.ObservableField
+import androidx.recyclerview.widget.LinearLayoutManager
 import me.michalkasza.smartlock.base.BaseView
 import me.michalkasza.smartlock.base.BaseViewModel
 import me.michalkasza.smartlock.data.model.LogEntry
@@ -12,7 +12,7 @@ class LogsViewModel(baseView: BaseView, app: Application): BaseViewModel(app), L
     val view = baseView as LogsInterface.View
 
     val adapterObservable = ObservableField<LogsAdapter>()
-    val layoutManagerObservable = ObservableField<LinearLayoutManager>()
+    val layoutManagerObservable = ObservableField<androidx.recyclerview.widget.LinearLayoutManager>()
 
     val logs = ArrayList<LogEntry>()
 

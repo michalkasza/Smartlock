@@ -1,8 +1,8 @@
 package me.michalkasza.smartlock.ui.lock.access
 
-import android.databinding.DataBindingUtil
-import android.databinding.ObservableField
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import me.michalkasza.smartlock.data.repository.LocksRepository
 import me.michalkasza.smartlock.databinding.ItemAccessBinding
 import java.util.*
 
-class AccessAdapter(var accessList: ArrayList<User>?) : RecyclerView.Adapter<AccessAdapter.ViewHolder>() {
+class AccessAdapter(var accessList: ArrayList<User>?) : androidx.recyclerview.widget.RecyclerView.Adapter<AccessAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_access, parent, false)
         return ViewHolder(view)
@@ -26,7 +26,7 @@ class AccessAdapter(var accessList: ArrayList<User>?) : RecyclerView.Adapter<Acc
         return accessList?.size ?: 0
     }
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         lateinit var accessedUser: User
         val isAdministrator = ObservableField<Boolean>()
         val accessUsername = ObservableField<String>()

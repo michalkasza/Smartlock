@@ -7,11 +7,11 @@
             name="viewModel"
             type="me.michalkasza.smartlock.ui.locks_list.LocksListViewModel"/>
     </data>
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_locks"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -22,16 +22,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            locksRecyclerAdapter="@{ viewModel.adapterObservable }"
+            locksLayoutManager="@{ viewModel.layoutManagerObservable }"/>
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_unlocked"
+            android:background="@color/accent"
+            android:src="@drawable/ic_add"
             android:onClick="@{(view) -> viewModel.addLockClicked(view)}"/>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

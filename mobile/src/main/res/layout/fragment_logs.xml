@@ -10,18 +10,18 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     <import type="android.view.View" />
 </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:background="@color/background_white">
         <!-- MAIN content -->
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_logs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             logsRecyclerAdapter="@{ viewModel.adapterObservable }"
             logsLayoutManager="@{ viewModel.layoutManagerObservable }"/>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

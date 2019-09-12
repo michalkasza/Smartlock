@@ -1,6 +1,6 @@
 package me.michalkasza.smartlock.data.repository
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -24,10 +24,15 @@ object LocksRepository {
         interactor.getLock(lockId).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
                 onNext = { lock ->
                     val tempLocks = ArrayList<Lock>()
-                    userLocks.value?.let { currentLocks -> tempLocks.addAll(currentLocks) }
+                    userLocks.value?.let { tempLocks.addAll(it) }
                     lock.id = lockId
                     if(currentLock.value?.id.equals(lockId)) {
                         currentLock.value = lock
+                    }
+                    tempLocks.forEach {
+                        if(it.id == lockId) {
+                            tempLocks.remove(it)
+                        }
                     }
                     tempLocks.add(lock)
                     userLocks.value = tempLocks

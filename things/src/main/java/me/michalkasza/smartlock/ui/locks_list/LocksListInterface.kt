@@ -1,6 +1,7 @@
 package me.michalkasza.smartlock.ui.locks_list
 
 import me.michalkasza.smartlock.base.BaseView
+import me.michalkasza.smartlock.data.model.Lock
 
 
 interface LocksListInterface {
@@ -9,7 +10,7 @@ interface LocksListInterface {
     }
 
     interface UserInteractions {
-        fun getLocks()
+        fun locksChanged(locks: List<Lock>)
         fun initNewLock()
         fun removeLock()
         fun addLockClicked(componentView: android.view.View)

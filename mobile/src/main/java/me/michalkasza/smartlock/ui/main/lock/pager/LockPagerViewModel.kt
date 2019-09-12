@@ -1,7 +1,7 @@
 package me.michalkasza.smartlock.ui.lock.pager
 
 import android.app.Application
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 import me.michalkasza.smartlock.base.BaseView
 import me.michalkasza.smartlock.base.BaseViewModel
 

@@ -10,9 +10,10 @@
             name="viewHolder"
             type="me.michalkasza.smartlock.ui.locks_list.LocksAdapter.ViewHolder"/>
     </data>
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_margin="8dp"
         android:background="@color/background_white">
 
         <TextView
@@ -23,6 +24,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:padding="4dp"
+            android:text="@{ lock.name }"
             android:textSize="@dimen/text_medium"
             android:background="@color/background_primary"
             android:textColor="@color/text_white"
@@ -31,11 +33,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.SwitchCompat
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/sw_status"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/ic_lock_status"
+            android:checked="@{ lock.status, default = true }"
             android:onCheckedChanged="@{ (switch, checked) -> viewHolder.lockStatusChanged(checked) }"
             android:thumb="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,5 +50,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name"
             app:track="@android:color/transparent" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
