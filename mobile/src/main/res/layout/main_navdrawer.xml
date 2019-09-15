@@ -34,7 +34,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:contentDescription="@string/drawer_content_description_avatar"
-                app:srcCompat="@drawable/placeholder_avatar" />
+                app:srcCompat="@drawable/placeholder_avatar2" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -69,7 +69,7 @@
             android:layout_marginBottom="32dp"
             android:layout_marginTop="32dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/tv_settings"
+            app:layout_constraintBottom_toTopOf="@+id/iv_logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cv_avatar_container">
@@ -84,32 +84,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/drawer_no_locks_info"
-                android:textColor="@color/text_white"/>
+                android:textColor="@color/text_white"
+                android:visibility="gone"/>
                 <!--android:visibility="@{ viewModel.adapterOvservable.get().itemCount==0 ? View.VISIBLE : View.GONE, default = gone }"/>-->
         </LinearLayout>
 
         <!-- footer -->
-        <ImageView
-            android:id="@+id/iv_settings"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/drawer_content_description_lock_icon"
-            app:srcCompat="@drawable/ic_settings"
-            app:layout_constraintBottom_toTopOf="@+id/iv_logout"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/tv_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/text_white"
-            android:textSize="@dimen/text_medium"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_settings"
-            app:layout_constraintStart_toEndOf="@+id/iv_settings"
-            app:layout_constraintTop_toTopOf="@+id/iv_settings"
-            android:text="@string/drawer_settings" />
-
         <ImageView
             android:id="@+id/iv_logout"
             android:layout_width="24dp"

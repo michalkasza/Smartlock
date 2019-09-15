@@ -32,4 +32,8 @@ class MainViewModel(baseView: BaseView, var app: Application): BaseViewModel(app
     override fun logoutClicked(componentView: View) {
         view.logout()
     }
+
+    override fun closeNavdrawer() {
+        view.closeNavdrawer()
+    }
 }

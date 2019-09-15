@@ -8,32 +8,46 @@
             type="me.michalkasza.smartlock.ui.main.lock.access.grant_dialog.GrantAccessViewModel"/>
         <import type="android.view.View"/>
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_email"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btn_email_grant"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/acl_grant_email_hint"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/colorPrimaryDark"
+            android:onClick="@{ () -> viewModel.onEmailGrantClicked() }"
+            android:text="Grant Access"
+            android:textAllCaps="false"
+            android:textColor="@color/text_white"
+            android:visibility="@{ viewModel.emailGrantButtonVisibility ? View.VISIBLE : View.GONE, default=visible }"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
-                android:text="@={ viewModel.email }"
-                android:inputType="textEmailAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/btn_confirm_grant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/colorAccent"
+            android:onClick="@{ () -> viewModel.onGrantConfirmationClicked() }"
+            android:text="Confirm &amp; Grant access for this user"
+            android:textAllCaps="false"
+            android:textColor="@color/text_white"
+            android:visibility="@{ viewModel.confirmGrantButtonVisibility ? View.VISIBLE : View.GONE, default=gone }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -43,12 +57,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:background="@color/background_white"
+            android:visibility="@{ viewModel.userInfoVisibility ? View.VISIBLE : View.GONE, default=visible }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tlv_timeline"
-            app:layout_constraintTop_toBottomOf="@+id/il_email"
-            android:visibility="@{ viewModel.userInfoVisibility ? View.VISIBLE : View.GONE, default=visible }">
+            app:layout_constraintTop_toBottomOf="@+id/il_email">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -82,39 +96,28 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btn_email_grant"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/il_email"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Grant Access"
-            android:textAllCaps="false"
-            android:textColor="@color/text_white"
-            android:onClick="@{ () -> viewModel.onEmailGrantClicked() }"
+            android:hint="@string/acl_grant_email_hint"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            android:visibility="@{ viewModel.emailGrantButtonVisibility ? View.VISIBLE : View.GONE, default=visible }"/>
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btn_confirm_grant"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@color/colorAccent"
-            android:text="Confirm &amp; Grant access for this user"
-            android:textAllCaps="false"
-            android:textColor="@color/text_white"
-            android:onClick="@{ () -> viewModel.onGrantConfirmationClicked() }"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            android:visibility="@{ viewModel.confirmGrantButtonVisibility ? View.VISIBLE : View.GONE, default=gone }"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:text="@={ viewModel.email }" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

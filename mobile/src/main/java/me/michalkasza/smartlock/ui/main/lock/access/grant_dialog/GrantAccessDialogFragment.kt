@@ -25,7 +25,7 @@ class GrantAccessDialogFragment: DialogFragment(), GrantAccessInterface.View {
         super.onCreate(savedInstanceState)
         lockId = arguments!!.getString("lockId")
         val style = DialogFragment.STYLE_NORMAL
-        val theme = android.R.style.Theme_Holo_Light
+        val theme = R.style.AppTheme
         setStyle(style, theme)
     }
 

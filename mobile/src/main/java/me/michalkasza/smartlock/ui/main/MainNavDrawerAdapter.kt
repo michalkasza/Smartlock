@@ -45,6 +45,7 @@ class MainNavDrawerAdapter(var locks: ArrayList<Lock>?, var supportFragmentManag
             LocksRepository.currentLock.value = lock
             FragmentFlowUtils.replaceFragment(supportFragmentManager, LockPagerFragment(), LockPagerFragment.TAG, false, false)
             isSelected.set(true)
+
         }
     }
 }

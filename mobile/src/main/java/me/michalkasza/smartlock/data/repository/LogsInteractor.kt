@@ -29,18 +29,18 @@ class LogsInteractor {
         }
     }
 
-    fun addLog(lockId: Lock, userId: User) {
+    fun addLog(lockId: Lock, user: User) {
         val data = HashMap<String, Any?>()
         data.put("accessTime", Date())
         data.put("lockId", lockId.id)
-        data.put("userId", userId.id)
+        data.put("userName", user.name + user.surname)
         db.add(data).addOnSuccessListener(OnSuccessListener { docReference ->
             docReference?.let {
                 val data2 = HashMap<String, Any>()
                 val arr = lockId.logs
                 arr.add(docReference.id)
                 data2.put("logs", arr)
-                lockId.id?.let { id -> FirebaseFirestore.getInstance().collection("locks").document(id).set(data2, SetOptions.merge()) }
+                lockId.id.let { id -> FirebaseFirestore.getInstance().collection("locks").document(id).set(data2, SetOptions.merge()) }
             }
         })
     }

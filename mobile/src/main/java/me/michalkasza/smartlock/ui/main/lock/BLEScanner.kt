@@ -1,39 +1,32 @@
 package me.michalkasza.smartlock.ui.lock
 
 import android.util.Log
-import no.nordicsemi.android.support.v18.scanner.*
-import java.util.*
+import android.bluetooth.le.BluetoothLeScanner
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.le.ScanCallback
+import android.bluetooth.le.ScanResult
 
 
 class BLEScanner {
-        val mScanCallback = object : ScanCallback() {
-            override fun onScanResult(callbackType: Int, result: ScanResult?) {
-                Log.e(TAG, "single dev: " + result?.device + " addr: " + result?.rssi)
-            }
-            override fun onBatchScanResults(results: List<ScanResult>) {
-                if (!results.isEmpty()) {
-                    val result = results[0]
-                    val device = result.device
-                    val deviceAddress = device.address
-                    Log.e(TAG, "batch dev: $device addr: $deviceAddress")
-                }
-            }
-            override fun onScanFailed(errorCode: Int) {
-                Log.e(TAG, "Error scan failed")
-            }
+    val mLeScanCallback = object : ScanCallback() {
+
+        override fun onScanResult(callbackType: Int, result: ScanResult) {
+            Log.e("BLE", result.device.name)
         }
 
-        val scanner = BluetoothLeScannerCompat.getScanner()
+        override fun onBatchScanResults(results: MutableList<ScanResult>?) {
+            Log.e("BLE", "${results?.size}")
+        }
 
-        val settings = ScanSettings.Builder()
-                .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
-                .setReportDelay(1000)
-                .build()
-
-        val scanFilter = ScanFilter.Builder().build()
+        override fun onScanFailed(errorCode: Int) {
+            Log.e("BLE", "error")
+        }
+    }
 
     fun startScan() {
-        scanner.startScan(Arrays.asList(scanFilter), settings, mScanCallback)
+        val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        val mBluetoothLeScanner = mBluetoothAdapter.bluetoothLeScanner;
+        mBluetoothLeScanner.startScan(mLeScanCallback)
     }
 
     companion object {

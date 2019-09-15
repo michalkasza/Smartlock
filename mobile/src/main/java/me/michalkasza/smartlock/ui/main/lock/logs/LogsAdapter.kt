@@ -38,7 +38,7 @@ class LogsAdapter(var logs: ArrayList<LogEntry>?) : androidx.recyclerview.widget
 
         fun bindView(logEntry: LogEntry) {
             accessDateTime.set(SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.US).format(logEntry.accessTime))
-            accessUser.set(logEntry.userId)
+            accessUser.set(logEntry.userName)
             val binding = DataBindingUtil.bind<ItemLogBinding>(view)
             view.findViewById<TimelineView>(R.id.tlv_timeline).initLine(viewType)
             this.logEntry= logEntry
