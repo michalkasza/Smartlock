@@ -108,19 +108,19 @@ class MainActivity : BaseActivity() {
 
         Log.e(TAG, "saveInFirebaseDatastore")
         val city = HashMap<String, Any?>()
-        city.put("accessList", arrayListOf("jQ3SygKyWeeYbJmLsuaInQcEZFA3"))
+        city.put("accessList", arrayListOf("zRrOuqEx8LYYIZazlSMWuhfKECQ2"))
         city.put("lastAccessTime", null)
         city.put("lastAccessUser", null)
         city.put("logs", arrayListOf<String>())
         city.put("name", "${sampleStreets[Random().nextInt(sampleStreets.size)]} ${Random().nextInt(39)}/${Random().nextInt(140)}")
-        city.put("ownerId", "jQ3SygKyWeeYbJmLsuaInQcEZFA3")
+        city.put("ownerId", "zRrOuqEx8LYYIZazlSMWuhfKECQ2")
         city.put("hostSecureId", getUUID())
         city.put("status", true)
 
         locksDb.document(uuid)
                 .set(city)
 
-        usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").get().addOnCompleteListener { task ->
+        usersDB.document("zRrOuqEx8LYYIZazlSMWuhfKECQ2").get().addOnCompleteListener { task ->
             val userSnapshot = task.result
             userSnapshot?.let {
                 userSnapshot.toObject<User>(User::class.java)?.let { user ->
@@ -129,7 +129,7 @@ class MainActivity : BaseActivity() {
                     locksOwned.add(uuid)
                     val data = HashMap<String, Any>()
                     data.put("locksOwned", locksOwned)
-                    usersDB.document("jQ3SygKyWeeYbJmLsuaInQcEZFA3").set(data, SetOptions.merge())
+                    usersDB.document("zRrOuqEx8LYYIZazlSMWuhfKECQ2").set(data, SetOptions.merge())
                 }
             }
         }
