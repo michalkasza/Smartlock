@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.michalkasza.smartlock">
+    package="dev.michalkasza.smartlock">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -16,16 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name="dev.michalkasza.smartlock.ui.main.MainActivity" />
 
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name="dev.michalkasza.smartlock.ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".base.BaseActivity" />
+        <activity android:name="dev.michalkasza.smartlock.base.BaseActivity" />
 
     </application>
 

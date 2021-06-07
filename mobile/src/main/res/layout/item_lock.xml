@@ -5,10 +5,10 @@
     <data>
         <variable
             name="lock"
-            type="me.michalkasza.smartlock.data.model.Lock"/>
+            type="dev.michalkasza.smartlock.data.model.Lock"/>
         <variable
             name="viewHolder"
-            type="me.michalkasza.smartlock.ui.main.MainNavDrawerAdapter.ViewHolder"/>
+            type="dev.michalkasza.smartlock.ui.main.MainNavDrawerAdapter.ViewHolder"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

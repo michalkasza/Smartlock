@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="me.michalkasza.smartlock.ui.lock.pager.LockPagerViewModel"/>
+            type="dev.michalkasza.smartlock.ui.main.lock.pager.LockPagerViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

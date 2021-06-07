@@ -5,10 +5,10 @@
     <data>
         <variable
             name="accessedUser"
-            type="me.michalkasza.smartlock.data.model.User"/>
+            type="dev.michalkasza.smartlock.data.model.User"/>
         <variable
             name="viewHolder"
-            type="me.michalkasza.smartlock.ui.lock.access.AccessAdapter.ViewHolder"/>
+            type="dev.michalkasza.smartlock.ui.main.lock.access.AccessAdapter.ViewHolder"/>
     </data>
 
     <androidx.cardview.widget.CardView

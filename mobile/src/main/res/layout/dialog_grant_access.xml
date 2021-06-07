@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="me.michalkasza.smartlock.ui.main.lock.access.grant_dialog.GrantAccessViewModel"/>
+            type="dev.michalkasza.smartlock.ui.main.lock.access.grant_dialog.GrantAccessViewModel"/>
         <import type="android.view.View"/>
     </data>
 

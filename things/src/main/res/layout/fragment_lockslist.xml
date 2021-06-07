@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="me.michalkasza.smartlock.ui.locks_list.LocksListViewModel"/>
+            type="dev.michalkasza.smartlock.ui.locks_list.LocksListViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

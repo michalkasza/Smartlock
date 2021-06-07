@@ -6,7 +6,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 <data>
     <variable
         name="viewModel"
-        type="me.michalkasza.smartlock.ui.lock.logs.LogsViewModel" />
+        type="dev.michalkasza.smartlock.ui.main.lock.logs.LogsViewModel" />
     <import type="android.view.View" />
 </data>
 

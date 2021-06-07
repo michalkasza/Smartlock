@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="me.michalkasza.smartlock.ui.lock.status.StatusViewModel"/>
+            type="dev.michalkasza.smartlock.ui.main.lock.status.StatusViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
