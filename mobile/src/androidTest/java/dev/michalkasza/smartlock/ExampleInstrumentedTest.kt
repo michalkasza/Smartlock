@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("me.michalkasza.smartlock", appContext.packageName)
+        assertEquals("dev.michalkasza.smartlock", appContext.packageName)
     }
 }
