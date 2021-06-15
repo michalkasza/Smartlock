@@ -73,5 +73,9 @@ freeline_project_description.json
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# Secret keys
+# NDK & Hidden secret keys
 secret-keys.cpp
+.cxx/
+
+# Mac OS leftovers
+.DS_Store
