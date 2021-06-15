@@ -31,6 +31,7 @@ import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.polidea.rxandroidble2.internal.RxBleLog
+import dev.michalkasza.smartlock.utils.SecretKeys
 
 class MainActivity : BaseActivity(), MainInterface.View {
     private lateinit var mainViewModel : MainViewModel

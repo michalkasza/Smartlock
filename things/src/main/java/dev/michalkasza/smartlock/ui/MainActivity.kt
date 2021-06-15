@@ -20,6 +20,7 @@ import dev.michalkasza.smartlock.data.repository.LocksRepository
 import dev.michalkasza.smartlock.ui.locks_list.LocksListFragment
 import android.telephony.TelephonyManager
 import dev.michalkasza.smartlock.R
+import dev.michalkasza.smartlock.utils.SecretKeys
 
 
 class MainActivity : BaseActivity() {
@@ -108,19 +109,19 @@ class MainActivity : BaseActivity() {
 
         Log.e(TAG, "saveInFirebaseDatastore")
         val city = HashMap<String, Any?>()
-        city.put("accessList", arrayListOf("mXJLzORWjHhs4KKfYvutSHkb1X13"))
+        city.put("accessList", arrayListOf(SecretKeys.getDefaultAdminUUID()))
         city.put("lastAccessTime", null)
         city.put("lastAccessUser", null)
         city.put("logs", arrayListOf<String>())
         city.put("name", "${sampleStreets[Random().nextInt(sampleStreets.size)]} ${Random().nextInt(39)}/${Random().nextInt(140)}")
-        city.put("ownerId", "mXJLzORWjHhs4KKfYvutSHkb1X13")
+        city.put("ownerId", SecretKeys.getDefaultAdminUUID())
         city.put("hostSecureId", getUUID())
         city.put("status", true)
 
         locksDb.document(uuid)
                 .set(city)
 
-        usersDB.document("mXJLzORWjHhs4KKfYvutSHkb1X13").get().addOnCompleteListener { task ->
+        usersDB.document(SecretKeys.getDefaultAdminUUID()).get().addOnCompleteListener { task ->
             val userSnapshot = task.result
             userSnapshot?.let {
                 userSnapshot.toObject<User>(User::class.java)?.let { user ->
@@ -129,7 +130,7 @@ class MainActivity : BaseActivity() {
                     locksOwned.add(uuid)
                     val data = HashMap<String, Any>()
                     data.put("locksOwned", locksOwned)
-                    usersDB.document("mXJLzORWjHhs4KKfYvutSHkb1X13").set(data, SetOptions.merge())
+                    usersDB.document(SecretKeys.getDefaultAdminUUID()).set(data, SetOptions.merge())
                 }
             }
         }

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
+    id("com.google.android.secrets-gradle-plugin") version "1.1.0"
 }
 
 android {
@@ -31,6 +32,11 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
     }
 }
 

@@ -1,0 +1,3 @@
+# ninja log v5
+0	300	1623714077	CMakeFiles/secret-keys.dir/src/main/cpp/secret-keys.cpp.o	4eac7a600eacca9d
+300	349	1623714077	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libsecret-keys.so	b6de7ce5038a3dac

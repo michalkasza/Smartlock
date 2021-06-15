@@ -1,0 +1,1 @@
+/home/michal/Development/Repositories/Smartlock/mobile/build/intermediates/cmake/debug/obj/x86_64
